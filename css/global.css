@@ -39,11 +39,12 @@ a:visited{
 #nav{
     border-bottom-style: solid;
     display:flex;
+    max-width: 100%;
 }
 
 #nav ul{
     margin:0;
-	padding:0 25rem 0 25rem;
+	padding:0 10% 0 10%;
 	list-style:none;
 	display:flex;
 	flex:1 0 0%;
@@ -75,7 +76,7 @@ li a:hover:not(.active){
     -ms-transition:     background-color .1s;
     -o-transition:      background-color .1s;
     transition:         background-color .1s;
-    font-size: 1vw;
+	font-size: calc(14px + (40 - 14) * ((100vw - 300px) / (4000 - 300)));;
     background-color: gold;
     color: white;
     padding: 20px;
