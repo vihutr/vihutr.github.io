@@ -1,0 +1,88 @@
+body
+{
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    /*line-height: calc(3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));*/
+    background-color: rgb(50,50,50);
+    color: white;
+}
+#top{
+	font-size: calc(30px + (40 - 18) * ((100vw - 300px) / (4000 - 300)));
+    text-align: left;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    border-color: gold rgb(40, 40, 40) white ;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    text-align: center;
+    color: white;
+    background-color: rgb(30,30,30);
+}
+#logodiv{
+    display: inline;
+}
+#logo{
+    height: 12vh;
+    vertical-align: middle;
+}
+
+a:link{
+    text-decoration: none;
+}
+a:visited{
+    color: black;
+    text-decoration: none;
+}
+#nav{
+    border-bottom-style: solid;
+    display:flex;
+}
+
+#nav ul{
+    margin:0;
+	padding:0 25vw 0 25vw;
+	list-style:none;
+	display:flex;
+	flex:1 0 0%;
+	justify-content:space-between
+  }
+li{
+	font-size: calc(12px + (14 - 8) * ((100vw - 300px) / (1600 - 300)));
+    line-height: 12vh;
+    /*border-left: 1px solid black;*/
+}
+li a{
+    -webkit-transition: color 1s;
+    -moz-transition:    color 1s;
+    -ms-transition:     color 1s;
+    -o-transition:      color 1s;
+    transition:         color 1s;
+    color: white;
+    text-align: center;
+    padding: 0px 16px;
+    text-decoration: none;
+}
+li a.active{
+    color:gold;
+}
+li a:hover:not(.active){
+    color:gold;
+}
+#contactbutton{
+    -webkit-transition: background-color .1s;
+    -moz-transition:    background-color .1s;
+    -ms-transition:     background-color .1s;
+    -o-transition:      background-color .1s;
+    transition:         background-color .1s;
+    font-size: 1vw;
+    background-color: gold;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+}
+
+#contactbutton:hover{
+    background-color: rgb(236, 153, 16);
+}
