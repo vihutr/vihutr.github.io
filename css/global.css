@@ -32,7 +32,7 @@ a:link{
     text-decoration: none;
 }
 a:visited{
-    color: black;
+    color: white;
     text-decoration: none;
 }
 #nav{
@@ -46,12 +46,11 @@ a:visited{
 	list-style:none;
 	display:flex;
 	flex:1 0 0%;
-	justify-content:space-between
+    justify-content:space-between;
   }
-li{
+#nav li{
 	font-size: calc(12px + (14 - 8) * ((100vw - 300px) / (1600 - 300)));
     line-height: 12vh;
-    /*border-left: 1px solid black;*/
 }
 li a{
     -webkit-transition: color 1s;
@@ -59,13 +58,12 @@ li a{
     -ms-transition:     color 1s;
     -o-transition:      color 1s;
     transition:         color 1s;
-    color: white;
     text-align: center;
     padding: 0px 16px;
     text-decoration: none;
 }
 li a.active{
-    color:gold;
+    color:rgb(75, 75, 75);
 }
 li a:hover:not(.active){
     color:gold;
