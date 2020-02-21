@@ -4,18 +4,54 @@
 	line-height: calc(2em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
     padding: 2vh 12vw 10vh 12vw;
 }
-#portraitdiv{
-    display:inline;
+
+@media (min-width:820px){
+    #maingrid{
+        display:grid;
+        grid-template-areas: 
+            'avatar p1'
+            'p2 p2';
+        column-gap: 3px;
+        row-gap: 3px;
+        width: 100vw;
+        max-width: 100%;
+        height:auto;
+    }
+    #portrait{
+        max-width: 100%;
+        max-height: 50vh;
+    }
 }
-#portrait{
-    max-width: 100%;
-    max-height: 40vh;
-    vertical-align: middle;
+@media (max-width:820px){
+    #maingrid{
+        display:grid;
+        grid-template-areas: 
+            'avatar'
+            'p1'
+            'p2';
+        column-gap: 3px;
+        row-gap: 3px;
+        width: 100vw;
+        max-width: 100%;
+        height:auto;
+    }
+    #portrait{
+        max-width: 100%;
+        max-height: 50vw;
+    }
 }
-#portraitp{
-    float: left;
-    padding-right: 4%;
+
+#portraitimg{
+    grid-area: avatar;
+    text-align: center;
 }
+#p1 {
+    grid-area: p1;
+}
+#p2 {
+    grid-area: p2;
+}
+
 #container{
     position: relative;
     min-height: 100vh;
