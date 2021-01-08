@@ -43,12 +43,16 @@
     #portrait{
         max-width: 100%;
         max-height: 50vw;
+        width: 100%;
+        height: auto;
     }
 }
 
 #portraitimg{
     grid-area: avatar;
     text-align: center;
+    justify-content: center;
+    width: 13em;
 }
 #p1 {
     grid-area: p1;
