@@ -10,7 +10,7 @@
         grid-template-areas: 
             'avatar p1'
             'p2 p2';
-        column-gap: 3px;
+        column-gap: 5vw;
         row-gap: 3px;
         width: 100vw;
         max-width: 100%;
