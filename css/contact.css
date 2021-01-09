@@ -13,3 +13,6 @@ a{
 a:hover:not(.active){
     color:gold;
 }
+#information p{
+    text-align: center;
+}
