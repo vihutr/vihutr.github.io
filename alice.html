@@ -23,11 +23,13 @@
 
 <body>
 <py-script>
+    from js import document 
+    from pyodide import create_proxy
     import re
     cipher = {'\n': '%', ' ': '@', '.': 'K', '!': 'Z', '?': 'o', "'": '}', ',': 'k', '-': '`', '♪': '\x0eCv\x0f', 'a': 'b', 'b': 'c', 'c': 
-    'd', 'd': 'e', 'e': 'f', 'f': 'g', 'g': 'h', 'h': 'i', 'i': 'q', 'j': 'r', 'k': 's', 'l': 't', 'm': 'u', 'n': 'v', 'o': 'w', 'p': 'x', 'q': '▀', 'r': '⌡', 's': '╚', 't': 'Ё', 'u': '╢', 'v': '╣', 'w': '╤', 'x': '╥', 'y': '╦', 'z': '╧', 'A': 'a', 'B': 'б', 'C': 'ц', 'D': 'д', 'E': 'е', 'F': 'ф', 'G': 'г', 'H': 'х', 'I': 'и', 'J': 'я', 'K': 'р', 'L': 'с', 'M': 'т', 'N': 'у', 'O': 'ж', 'P': 'в', 'Q': '', 'R': 'ы', 'S': 'Б', 'T': 'Ц', 'U': 'Д', 'V': '', 'W': 'Ф', 'X': '', 'Y': 'Х', 'Z': ''}
-    decipher = {'%': '\n', '@': ' ', 'K': '.', 'Z': '!', 'o': '?', '}': "'", 'k': ',', '`': '-', '\x0eCv\x0f': '♪', 'b': 'a', 'c': 'b', 'd': 
-    'c', 'e': 'd', 'f': 'e', 'g': 'f', 'h': 'g', 'i': 'h', 'q': 'i', 'r': 'j', 's': 'k', 't': 'l', 'u': 'm', 'v': 'n', 'w': 'o', 'x': 'p', '▀': 'q', '⌡': 'r', '╚': 's', 'Ё': 't', '╢': 'u', '╣': 'v', '╤': 'w', '╥': 'x', '╦': 'y', '╧': 'z', 'a': 'A', 'б': 'B', 'ц': 'C', 'д': 'D', 'е': 'E', 'ф': 'F', 'г': 'G', 'х': 'H', 'и': 'I', 'я': 'J', 'р': 'K', 'с': 'L', 'т': 'M', 'у': 'N', 'ж': 'O', 'в': 'P', '': 'Z', 'ы': 'R', 'Б': 'S', 'Ц': 'T', 'Д': 'U', 'Ф': 'W', 'Х': 'Y'}
+    'd', 'd': 'e', 'e': 'f', 'f': 'g', 'g': 'h', 'h': 'i', 'i': 'q', 'j': 'r', 'k': 's', 'l': 't', 'm': 'u', 'n': 'v', 'o': 'w', 'p': 'x', 'q': '▀', 'r': '⌡', 's': '╚', 't': 'Ё', 'u': '╢', 'v': '╣', 'w': '╤', 'x': '╥', 'y': '╦', 'z': '╧', 'A': 'а', 'B': 'б', 'C': 'ц', 'D': 'д', 'E': 'е', 'F': 'ф', 'G': 'г', 'H': 'х', 'I': 'и', 'J': 'я', 'K': 'р', 'L': 'с', 'M': 'т', 'N': 'у', 'O': 'ж', 'P': 'в', 'Q': '', 'R': 'ы', 'S': 'Б', 'T': 'Ц', 'U': 'Д', 'V': '', 'W': 'Ф', 'X': '', 'Y': 'Х', 'Z': ''}
+    dcipher = {'%': '\n', '@': ' ', 'K': '.', 'Z': '!', 'o': '?', '}': "'", 'k': ',', '`': '-', '\x0eCv\x0f': '♪', 'b': 'a', 'c': 'b', 'd': 
+    'c', 'e': 'd', 'f': 'e', 'g': 'f', 'h': 'g', 'i': 'h', 'q': 'i', 'r': 'j', 's': 'k', 't': 'l', 'u': 'm', 'v': 'n', 'w': 'o', 'x': 'p', '▀': 'q', '⌡': 'r', '╚': 's', 'Ё': 't', '╢': 'u', '╣': 'v', '╤': 'w', '╥': 'x', '╦': 'y', '╧': 'z', 'a': 'A', 'а': 'A', 'б': 'B', 'ц': 'C', 'д': 'D', 'е': 'E', 'ф': 'F', 'г': 'G', 'х': 'H', 'и': 'I', 'я': 'J', 'р': 'K', 'с': 'L', 'т': 'M', 'у': 'N', 'ж': 'O', 'в': 'P', '': 'Z', 'ы': 'R', 'Б': 'S', 'Ц': 'T', 'Д': 'U', 'Ф': 'W', 'X': 'Y', 'Х': 'Y'}
     
     def convert(word, dict):
         output = ''
@@ -42,7 +44,17 @@
         word = document.getElementById('input').value
         output = convert(word, cipher)
         pyscript.write("output", output)
-  
+    
+    def decipher(*args, **kwargs):
+        word = document.getElementById('input').value
+        output = convert(word, dcipher)
+        pyscript.write("output", output)
+    
+    encrypt_proxy = create_proxy(encrypt)
+    decipher_proxy = create_proxy(decipher)
+    
+    document.getElementById("encrypt").addEventListener("click", encrypt_proxy)
+    document.getElementById("decipher").addEventListener("click", decipher_proxy)
 </py-script>
 
     <div class = "container">
@@ -51,18 +63,18 @@
         <br />
         <p><h3>Input</h3>
         <input id ="input" type="text" class = "form-control" aria-label = "Large" aria-describedby = "inputGroup=inputGroup-sizing-sm" placeholder="Enter Text to Convert"/></p>
-        <br />
+        
         <center>
-            <button id="encrypt" type="submit"  class="btn btn-info" pys-onClick="encrypt">Encrypt</button>
+            <button id="encrypt" type="submit"  class="btn btn-info">Encrypt</button>
+            <button id="decipher" type="submit"  class="btn btn-info">Decipher</button>
         </center>
         
         <br />
         <p>
-            <h4>Converted Text:</h4>
-            <textarea id = "output"
-            class = "form-control" rows="2" aria-label="Large" aria-describedby ="inputGroup-sizing-sm" placeholder="Result" id = "input">
-            </textarea>
-        </p>
+        <h4>Converted Text:</h4>
+        <textarea id="output"
+        class="form-control" rows="2" aria-label="Large"
+        aria-describedby ="inputGroup-sizing-sm" placeholder="Result"></textarea></p>
     </div>
     
 </body>
