@@ -8,8 +8,8 @@
     #maingrid{
         display:grid;
         grid-template-areas: 
-            'avatar p1'
-            'p2 p2';
+            'p1'
+            'p2';
         column-gap: 5vw;
         row-gap: 3px;
         width: 100vw;
