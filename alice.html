@@ -8,7 +8,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <style>
         body {
-            background-color: gray;
+            background-color: rgb(49, 51, 52);
+            color: white;
             padding-top: 100px;
             min-height: 100vh;
             margin:0;
@@ -16,7 +17,8 @@
             flex-direction: column;
         }
         .container {
-            background-color: #fcfcfc
+            background-color: rgb(49, 51, 52);
+            color: white;
         }
     </style>
 </head>
@@ -57,12 +59,12 @@
     document.getElementById("decipher").addEventListener("click", decipher_proxy)
 </py-script>
 
-    <div class = "container">
-
-        <h1 class = "text-center">Alice</h1>
+    <div class="container">
         <br />
-        <p><h3>Input</h3>
-        <input id ="input" type="text" class = "form-control" aria-label = "Large" aria-describedby = "inputGroup=inputGroup-sizing-sm" placeholder="Enter Text to Convert"/></p>
+        <h1 class="text-center">Alice</h1>
+        <br />
+        <p><h4>Input</h4>
+        <textarea id="input" type="text" class="form-control" rows="3" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Enter Text to Convert"></textarea></p>
         
         <center>
             <button id="encrypt" type="submit"  class="btn btn-info">Encrypt</button>
@@ -72,9 +74,7 @@
         <br />
         <p>
         <h4>Converted Text:</h4>
-        <textarea id="output"
-        class="form-control" rows="2" aria-label="Large"
-        aria-describedby ="inputGroup-sizing-sm" placeholder="Result"></textarea></p>
+        <textarea id="output" class="form-control" rows="2" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Result"></textarea></p>
     </div>
     
 </body>
