@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Alice</title>
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: gray;
+            padding-top: 100px;
+            min-height: 100vh;
+            margin:0;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            background-color: #fcfcfc
+        }
+    </style>
+</head>
+
+<body>
+<py-script>
+    import re
+    cipher = {'\n': '%', ' ': '@', '.': 'K', '!': 'Z', '?': 'o', "'": '}', ',': 'k', '-': '`', '♪': '\x0eCv\x0f', 'a': 'b', 'b': 'c', 'c': 
+    'd', 'd': 'e', 'e': 'f', 'f': 'g', 'g': 'h', 'h': 'i', 'i': 'q', 'j': 'r', 'k': 's', 'l': 't', 'm': 'u', 'n': 'v', 'o': 'w', 'p': 'x', 'q': '▀', 'r': '⌡', 's': '╚', 't': 'Ё', 'u': '╢', 'v': '╣', 'w': '╤', 'x': '╥', 'y': '╦', 'z': '╧', 'A': 'a', 'B': 'б', 'C': 'ц', 'D': 'д', 'E': 'е', 'F': 'ф', 'G': 'г', 'H': 'х', 'I': 'и', 'J': 'я', 'K': 'р', 'L': 'с', 'M': 'т', 'N': 'у', 'O': 'ж', 'P': 'в', 'Q': '', 'R': 'ы', 'S': 'Б', 'T': 'Ц', 'U': 'Д', 'V': '', 'W': 'Ф', 'X': '', 'Y': 'Х', 'Z': ''}
+    decipher = {'%': '\n', '@': ' ', 'K': '.', 'Z': '!', 'o': '?', '}': "'", 'k': ',', '`': '-', '\x0eCv\x0f': '♪', 'b': 'a', 'c': 'b', 'd': 
+    'c', 'e': 'd', 'f': 'e', 'g': 'f', 'h': 'g', 'i': 'h', 'q': 'i', 'r': 'j', 's': 'k', 't': 'l', 'u': 'm', 'v': 'n', 'w': 'o', 'x': 'p', '▀': 'q', '⌡': 'r', '╚': 's', 'Ё': 't', '╢': 'u', '╣': 'v', '╤': 'w', '╥': 'x', '╦': 'y', '╧': 'z', 'a': 'A', 'б': 'B', 'ц': 'C', 'д': 'D', 'е': 'E', 'ф': 'F', 'г': 'G', 'х': 'H', 'и': 'I', 'я': 'J', 'р': 'K', 'с': 'L', 'т': 'M', 'у': 'N', 'ж': 'O', 'в': 'P', '': 'Z', 'ы': 'R', 'Б': 'S', 'Ц': 'T', 'Д': 'U', 'Ф': 'W', 'Х': 'Y'}
+    
+    def convert(word, dict):
+        output = ''
+        for c in word:
+            d = '_'
+            if c in dict:
+                d = dict[c]
+            output += d
+        return(output)
+    
+    def encrypt(*args, **kwargs):
+        word = document.getElementById('input').value
+        output = convert(word, cipher)
+        pyscript.write("output", output)
+  
+</py-script>
+
+    <div class = "container">
+
+        <h1 class = "text-center">Alice</h1>
+        <br />
+        <p><h3>Input</h3>
+        <input id ="input" type="text" class = "form-control" aria-label = "Large" aria-describedby = "inputGroup=inputGroup-sizing-sm" placeholder="Enter Text to Convert"/></p>
+        <br />
+        <center>
+            <button id="encrypt" type="submit"  class="btn btn-info" pys-onClick="encrypt">Encrypt</button>
+        </center>
+        
+        <br />
+        <p>
+            <h4>Converted Text:</h4>
+            <textarea id = "output"
+            class = "form-control" rows="2" aria-label="Large" aria-describedby ="inputGroup-sizing-sm" placeholder="Result" id = "input">
+            </textarea>
+        </p>
+    </div>
+    
+</body>
+</html>
