@@ -122,6 +122,9 @@ var grid = new Grid()
 var confirm1 = new Audio('../sounds/choice1.wav')
 var confirm2 = new Audio('../sounds/choice2.wav')
 var cancel1 = new Audio('../sounds/cancel1.wav')
+confirm1.volume = .50
+confirm2.volume = .50
+cancel1.volume = .50
 
 addEventListener("keydown", function(e){
     console.log('down ' + e.code)
