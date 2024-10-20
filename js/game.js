@@ -1,5 +1,4 @@
 import Spritesheet from "./spritesheet.js"
-import Button from "./button.js"
 import Menu from "./menu.js"
 class Player {
     constructor(spritesheet) {
