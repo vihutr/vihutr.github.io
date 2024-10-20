@@ -1,4 +1,5 @@
 import Spritesheet from "./spritesheet.js"
+import Button from "./button.js"
 import Menu from "./menu.js"
 class Player {
     constructor(spritesheet) {
@@ -119,22 +120,36 @@ var player = new Player(plf)
 
 var grid = new Grid()
 
+var confirm1 = new Audio('../sounds/choice1.wav')
+var confirm2 = new Audio('../sounds/choice2.wav')
+var cancel1 = new Audio('../sounds/cancel1.wav')
+
 addEventListener("keydown", function(e){
-    // console.log('down ' + e.code)
+    console.log('down ' + e.code)
     switch(scene){
         case 0:
             switch(e.code){
                 case "ArrowRight": 
+                case "KeyD":
                     break;
                 case "ArrowLeft": 
+                case "KeyA":
                     break;
                 case "ArrowUp": 
+                case "KeyW":
                     title.selectedIndex -= 1;
                     break;
                 case "ArrowDown": 
+                case "KeyS":
                     title.selectedIndex += 1;
+                case "Enter": 
                 case "Space":
-                    if (title.selectedIndex == 0){scene = 1}
+                case "KeyZ":
+                    if (title.selectedIndex == 0){scene = 1; confirm2.play();}
+                    break;
+                case "Escape":
+                case "KeyX":
+                    cancel1.play()
                     break;
             }
         case 1:
@@ -180,8 +195,14 @@ addEventListener("keyup", function(e){
             break;
     }
 })
-function update(){
+let lastTime = Date.now();
+const fps = 60
+const msPerFrame = 1000/fps
+
+function update(currentTime){
     requestAnimationFrame(update)
+    let deltaTime = Date.now() - lastTime/msPerFrame
+    lastTime = Date.now()
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     switch(scene){
         case 0:
