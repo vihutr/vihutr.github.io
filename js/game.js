@@ -198,7 +198,7 @@ addEventListener("keyup", function(e){
     }
 })
 let lastTime = Date.now();
-const fps = 60
+const fps = 30
 const msPerFrame = 1000/fps
 
 function update(currentTime){
