@@ -197,27 +197,41 @@ addEventListener("keyup", function(e){
             break;
     }
 })
-let lastTime = Date.now();
-const fps = 30
-const msPerFrame = 1000/fps
+let accumulatedTime = 0;
+let lastTime = 0;
+const fps = 60;
+const ms = 1000;
+const msPerFrame = 1000/fps;
 
-function update(currentTime){
-    requestAnimationFrame(update)
-    let deltaTime = Date.now() - lastTime/msPerFrame
-    lastTime = Date.now()
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+function gameLoop(currentTime){
+    // delta time
+    let deltaTime = currentTime - lastTime;
+    lastTime = currentTime;
+    accumulatedTime += deltaTime;
+
+    while(accumulatedTime > msPerFrame){
+        switch(scene){
+            case 0:
+                title.update();
+                break;
+            case 1:
+                player.update();
+                break;
+        }
+        accumulatedTime -= msPerFrame;
+    }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     switch(scene){
         case 0:
             ctx.drawImage(titlebg, canvas.width/2 - titlebg.width/2,
-                canvas.height/2 - titlebg.width/2)
-            title.update()
-            title.draw(ctx)
-            break
+                canvas.height/2 - titlebg.width/2);
+            title.draw(ctx);
+            break;
         case 1:
-            grid.draw(ctx)
-            player.update()
-            player.draw(ctx)
-            break
+            grid.draw(ctx);
+            player.draw(ctx);
+            break;
     }
+    requestAnimationFrame(gameLoop);
 }
-update()
+requestAnimationFrame(gameLoop);
