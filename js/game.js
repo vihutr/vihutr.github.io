@@ -1,96 +1,10 @@
 import Spritesheet from "./spritesheet.js"
 import Menu from "./menu.js"
-class Player {
-    constructor(spritesheet) {
-        this.spritesheet = spritesheet
-        this.x = 0
-        this.y = 0
-        this.vx = 0
-        this.vy = 0
-        this.held_keys = [false, false, false, false] //wasd
-    }
-    draw(ctx) {
-        this.spritesheet.draw(ctx, this.x, this.y)
-    }
-    update(){
-        this.spritesheet.rpgmUpdate()
-        this.movement()
-        //limit
-        if (this.x < 0) { this.x = 0 }
-        if (this.x > ctx.canvas.width - this.spritesheet.sprite_w) { 
-            this.x = ctx.canvas.width - this.spritesheet.sprite_w }
-        if (this.y < 0) { this.y = 0 }
-        if (this.y > ctx.canvas.height - this.spritesheet.sprite_h) { 
-            this.y = ctx.canvas.height - this.spritesheet.sprite_h }
-        // console.log('x: ' + this.x)
-        // console.log('y: ' + this.y)
-    }
+import Player from "./player.js"
+import Grid from "./grid.js"
+import InputHandler from "./input.js"
 
-    movement(){
-        this.x += this.vx
-        this.y += this.vy
-    }
-}
-
-class Grid {
-    constructor() {
-        this.size = 50
-        this.square_size = 48
-        this.gap = this.size - this.square_size
-    }
-    draw(ctx) {
-        // console.log('draw grid')
-        let font_size = 14
-        ctx.textAlign = 'left' 
-        ctx.font = `${font_size}px MS Mono`;
-        ctx.fillStyle = `rgb(255,255,255)`;
-        ctx.fillRect(
-            this.gap,
-            this.gap,
-            Math.ceil(ctx.canvas.width/this.size - 1) * this.size+this.gap,
-            Math.ceil(ctx.canvas.height/this.size - 1) * this.size+this.gap)
-        for (let i = 0; i < (ctx.canvas.height/this.size)-1; i++) {
-            for (var j = 0; j < (ctx.canvas.width/this.size)-1; j++) {
-                //let t_x = this.size * j + this.size/4
-                //let t_y = this.size * i + this.size/4
-                let coord = `${j}, ${i}`
-                ctx.fillStyle = `rgb(10,10,10)`;
-                ctx.fillRect(
-                    2*this.gap+(this.size * j),
-                    2*this.gap+(this.size * i),
-                    this.square_size,
-                    this.square_size
-                )
-                // ctx.fillStyle = `rgb(255,0,0)`;
-                // ctx.fillRect(
-                //     t_x,
-                //     t_y,
-                //     5,
-                //     5
-                // )
-
-                ctx.fillStyle = `rgb(255,255,255)`;
-                // ctx.fillText(coord, t_x+font_size/4, t_y+font_size/2);
-                ctx.fillText(coord, this.size*j+this.gap*2, this.size*i+font_size+this.gap);
-            }
-        }
-        //for (let i = 0; i < (ctx.canvas.height / this.size) - 1; i++) {
-        //    for (var j = 0; j < (ctx.canvas.width/ this.size) - 1; j++) {
-        //    }
-        //        let t_x = this.size * j
-        //        let t_y = this.size * i
-        //        let coord = `${i}, ${j}`
-        //        ctx.fillStyle = `rgb(255,255,255)`;
-        //        ctx.font = "8px MS Mono";
-        //        ctx.fillText(coord, t_x, t_y);
-        //        ctx.fillStyle = `rgb(10,10,10)`;
-        //}gam
-    }
-}
-
-
-
-let scene = 0
+let scene = "title"
 const canvas = document.getElementById("canvas")
 const bound = canvas.parentElement.getBoundingClientRect()
 canvas.width = bound.width
@@ -122,112 +36,179 @@ var grid = new Grid()
 var confirm1 = new Audio('../sounds/choice1.wav')
 var confirm2 = new Audio('../sounds/choice2.wav')
 var cancel1 = new Audio('../sounds/cancel1.wav')
-confirm1.volume = .50
-confirm2.volume = .50
-cancel1.volume = .50
+confirm1.volume = .25
+confirm2.volume = .25
+cancel1.volume = .25
 
-addEventListener("keydown", function(e){
-    console.log('down ' + e.code)
-    switch(scene){
-        case 0:
-            switch(e.code){
-                case "ArrowRight": 
-                case "KeyD":
-                    break;
-                case "ArrowLeft": 
-                case "KeyA":
-                    break;
-                case "ArrowUp": 
-                case "KeyW":
-                    title.selectedIndex -= 1;
-                    break;
-                case "ArrowDown": 
-                case "KeyS":
-                    title.selectedIndex += 1;
-                case "Enter": 
-                case "Space":
-                case "KeyZ":
-                    if (title.selectedIndex == 0){scene = 1; confirm2.play();}
-                    break;
-                case "Escape":
-                case "KeyX":
-                    cancel1.play()
-                    break;
-            }
-        case 1:
-            switch(e.code){
-                case "ArrowRight": 
-                    player.vx = 5;
-                    player.spritesheet.sy = player.spritesheet.sprite_h * 2
-                    break;
-                case "ArrowLeft": 
-                    player.vx = -5;
-                    player.spritesheet.sy = player.spritesheet.sprite_h * 1
-                    break;
-                case "ArrowUp": 
-                    player.vy = -5;
-                    player.spritesheet.sy = player.spritesheet.sprite_h * 3
-                    break;
-                case "ArrowDown": 
-                    player.vy = 5;
-                    player.spritesheet.sy = player.spritesheet.sprite_h * 0
-                    break;
-                default:
-                    // console.log("vx: " + player.vx)
-                    // console.log("vy: " + player.vy)
-            break
-        }
-    }
-})
-
-addEventListener("keyup", function(e){
-    // console.log("up " + e.code)
-    switch(e.code){
-        case "ArrowRight": 
-            player.vx = 0;
-            break;
-        case "ArrowLeft": 
-            player.vx = 0;
-            break;
-        case "ArrowUp": 
-            player.vy = 0;
-            break;
-        case "ArrowDown": 
-            player.vy = 0;
-            break;
-    }
-})
+// addEventListener("keydown", function(e){
+//     console.log('down ' + e.code)
+//     switch(scene){
+//         case 'title':
+//             switch(e.code){
+//                 case "ArrowRight": 
+//                 case "KeyD":
+//                     break;
+//                 case "ArrowLeft": 
+//                 case "KeyA":
+//                     break;
+//                 case "ArrowUp": 
+//                 case "KeyW":
+//                     title.selectedIndex -= 1;
+//                     break;
+//                 case "ArrowDown": 
+//                 case "KeyS":
+//                     title.selectedIndex += 1;
+//                 case "Enter": 
+//                 case "Space":
+//                 case "KeyZ":
+//                     if (title.selectedIndex == 0){scene = "overworld"; confirm2.play();}
+//                     break;
+//                 case "Escape":
+//                 case "KeyX":
+//                     cancel1.play()
+//                     break;
+//             }
+//         case 'overworld':
+//             switch(e.code){
+//                 case "ArrowRight": 
+//                     player.vx = 5;
+//                     player.spritesheet.sy = player.spritesheet.sprite_h * 2
+//                     break;
+//                 case "ArrowLeft": 
+//                     player.vx = -5;
+//                     player.spritesheet.sy = player.spritesheet.sprite_h * 1
+//                     break;
+//                 case "ArrowUp": 
+//                     player.vy = -5;
+//                     player.spritesheet.sy = player.spritesheet.sprite_h * 3
+//                     break;
+//                 case "ArrowDown": 
+//                     player.vy = 5;
+//                     player.spritesheet.sy = player.spritesheet.sprite_h * 0
+//                     break;
+//                 default:
+//                     // console.log("vx: " + player.vx)
+//                     // console.log("vy: " + player.vy)
+//             break
+//         }
+//     }
+// })
+// 
+// addEventListener("keyup", function(e){
+//     // console.log("up " + e.code)
+//     switch(e.code){
+//         case "ArrowRight": 
+//             player.vx = 0;
+//             break;
+//         case "ArrowLeft": 
+//             player.vx = 0;
+//             break;
+//         case "ArrowUp": 
+//             player.vy = 0;
+//             break;
+//         case "ArrowDown": 
+//             player.vy = 0;
+//             break;
+//     }
+// })
 let accumulatedTime = 0;
 let lastTime = 0;
+let globalTimer = 0.0;
 const fps = 60;
 const ms = 1000;
 const msPerFrame = 1000/fps;
+
+const keyCodes = ["ArrowUp", "ArrowLeft", "ArrowDown", "ArrowRight", "KeyW", "KeyA", "KeyS", "KeyD", "Enter", "Space", "KeyZ", "KeyX"]
+let input = new InputHandler(keyCodes)
 
 function gameLoop(currentTime){
     // delta time
     let deltaTime = currentTime - lastTime;
     lastTime = currentTime;
     accumulatedTime += deltaTime;
+    globalTimer += deltaTime;
+    
+    // update based on inputs
+    input.update(deltaTime)
+    switch(scene){
+        case 'title':
+            if (input.keys["ArrowRight"] || input.keys["KeyD"]){
+            }
+            if (input.keys["ArrowLeft"] || input.keys["KeyA"]){
+            }
+            if (input.keys["ArrowUp"].justPressed() || input.keys["KeyW"].justPressed()){
+                title.selectedIndex -= 1;
+            }
+            if (input.keys["ArrowDown"].justPressed() || input.keys["KeyS"].justPressed()){
+                title.selectedIndex += 1;
+            }
+            if (input.keys["Enter"]){
+            }
+            if (input.keys["Space"]){
+            }
+            if (input.keys["KeyZ"].justPressed()){
+                switch (title.selectedIndex){
+                    case 0:
+                        console.log("z pressed on new game")
+                        scene = "overworld";
+                        confirm2.play();
+                    break;
+                }
+            }
+            if (input.keys["Escape"]){
 
+            }
+            if (input.keys["KeyX"]){
+                cancel1.play()
+            }
+            break;
+        case 'overworld':
+            console.log(input.keys["ArrowRight"].down)
+            player.vx = 0
+            player.vy = 0
+            if (input.keys["ArrowRight"].down){ 
+                player.vx += 5;
+                player.spritesheet.sy = player.spritesheet.sprite_h * 2
+            }
+            if (input.keys["ArrowLeft"].down){ 
+                player.vx -= 5;
+                player.spritesheet.sy = player.spritesheet.sprite_h * 1
+            }
+            if (input.keys["ArrowUp"].down){ 
+                player.vy -= 5;
+                player.spritesheet.sy = player.spritesheet.sprite_h * 3
+            }
+            if (input.keys["ArrowDown"].down){
+                player.vy += 5;
+                player.spritesheet.sy = player.spritesheet.sprite_h * 0
+            }
+            break;
+    }
+
+   
+    // update
+    // only update every frame according to fps
     while(accumulatedTime > msPerFrame){
         switch(scene){
-            case 0:
+            case 'title':
                 title.update();
                 break;
-            case 1:
-                player.update();
+            case 'overworld':
+                player.update(ctx);
                 break;
         }
         accumulatedTime -= msPerFrame;
     }
+    
+    // draw
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     switch(scene){
-        case 0:
+        case 'title':
             ctx.drawImage(titlebg, canvas.width/2 - titlebg.width/2,
                 canvas.height/2 - titlebg.width/2);
             title.draw(ctx);
             break;
-        case 1:
+        case 'overworld':
             grid.draw(ctx);
             player.draw(ctx);
             break;
