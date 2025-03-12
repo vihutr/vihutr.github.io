@@ -32,16 +32,17 @@ export default class InputHandler {
 
     update(dt) {
         for (let key in this.keys){
-            this.keys[key].update(dt);
-            if (this.keys[key].down) {
-                let k = this.keys[key]
+            let k = this.keys[key]
+            if (k.lastEvent == 2) { k.lastEvent = null }
+            k.update(dt);
+            if (k.down) {
                 console.log("Key: %s, held: %d", key, k.holdTime)
                 // reset key when released beyond os repeat window
                 if (k.osRepeatTime > osRepeatWindow) {
                     k.down = false;
                     k.holdTime = 0;
                     k.osRepeatTime = 0;
-                    k.lastEvent = null;
+                    k.lastEvent = 2;
                 }
             }
         }
@@ -72,5 +73,13 @@ class KeyState {
 
     justPressed() {
         return this.down && this.holdTimeUpdate == 1;
+    }
+    
+    justReleased() {
+        return this.lastEvent == 2;
+    }
+
+    justPressedOrReleased() {
+        return (this.down && this.holdTimeUpdate == 1) || this.lastEvent == 2;
     }
 }
