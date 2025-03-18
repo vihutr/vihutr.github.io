@@ -57,7 +57,10 @@ function gameLoop(currentTime){
     accumulatedTime += deltaTime;
     globalTimer += deltaTime;
     
-    // update based on inputs
+    // update
+    
+    // handle inputs based on scene
+    // inputs are tied to dt over fps
     input.update(deltaTime)
     switch(scene){
         case 'title':
@@ -88,29 +91,10 @@ function gameLoop(currentTime){
             console.log(input.keys["ArrowRight"].down)
             player.vx = 0
             player.vy = 0
-            if (input.keys["ArrowRight"].justPressedOrReleased() || input.keys["ArrowLeft"].justPressedOrReleased()){
-                player.last_direction = 0
-            }
-            if (input.keys["ArrowUp"].justPressedOrReleased() || input.keys["ArrowDown"].justPressedOrReleased()){
-                player.last_direction = 1
-            }
-
-            if (input.keys["ArrowRight"].down){ 
-                player.vx += 5;
-            }
-            if (input.keys["ArrowLeft"].down){ 
-                player.vx -= 5;
-            }
-            if (input.keys["ArrowUp"].down){ 
-                player.vy -= 5;
-            }
-            if (input.keys["ArrowDown"].down){
-                player.vy += 5;
-            }
+            player.handle_inputs(input)
             break;
     }
-   
-    // update
+
     // only update every frame according to fps
     while(accumulatedTime > msPerFrame){
         switch(scene){
@@ -137,6 +121,7 @@ function gameLoop(currentTime){
             player.draw(ctx);
             break;
     }
+
     requestAnimationFrame(gameLoop);
 }
 requestAnimationFrame(gameLoop);

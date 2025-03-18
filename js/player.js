@@ -44,4 +44,17 @@ export default class Player {
         this.x += this.vx
         this.y += this.vy
     }
+
+    handle_inputs(input){
+        if (input.keys["ArrowRight"].down){ this.vx += 5; }
+        if (input.keys["ArrowLeft"].down){ this.vx -= 5; }
+        if (input.keys["ArrowUp"].down){ this.vy -= 5; }
+        if (input.keys["ArrowDown"].down){ this.vy += 5; }
+        this.correct_direction()
+    }
+
+    correct_direction(){
+        if (this.vy == 0){ this.last_direction = 0 }
+        if (this.vx == 0){ this.last_direction = 1 }
+    }
 }
