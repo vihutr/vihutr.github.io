@@ -26,10 +26,13 @@ export default class Player {
         //limit
         if (this.x < 0) { this.x = 4 }
         if (this.x > ctx.canvas.width - this.spritesheet.sprite_w - 4) { 
-            this.x = ctx.canvas.width - this.spritesheet.sprite_w - 4}
+            this.x = ctx.canvas.width - this.spritesheet.sprite_w - 4
+        }
         if (this.y < 0) { this.y = 4 }
         if (this.y > ctx.canvas.height - this.spritesheet.sprite_h) { 
             this.y = ctx.canvas.height - this.spritesheet.sprite_h }
+        this.startx = this.x
+        this.starty = this.y
         // console.log('x: ' + this.x)
         // console.log('y: ' + this.y)
     }
@@ -73,6 +76,14 @@ export default class Player {
             if (this.timer > 1) {
                 this.timer = 1
                 this.moving = false
+                if (this.endx != null){ this.x = this.endx }
+                if (this.endy != null){ this.y = this.endy }
+                this.timer = 0
+                this.startx = this.x
+                this.starty = this.y
+                this.endx = null
+                this.endy = null
+                this.last_direction = null
             }
             console.log(this.last_direction)
             if (this.last_direction == 0) {
@@ -83,15 +94,6 @@ export default class Player {
                 console.log("lerp y")
                 this.y = this.lerp( this.starty, this.endy, this.timer)
                 console.log(this.y)
-            }
-            if (!this.moving) {
-                if (this.endx != null){ this.x = this.endx }
-                if (this.endy != null){ this.y = this.endy }
-                this.timer = 0
-                this.startx = this.x
-                this.starty = this.y
-                this.endx = null
-                this.endy = null
             }
         }
     }
