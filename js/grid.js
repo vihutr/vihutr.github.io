@@ -36,7 +36,7 @@ export default class Grid {
                 // )
 
                 ctx.fillStyle = `rgb(255,255,255)`;
-                // ctx.fillText(coord, t_x+font_size/4, t_y+font_size/2);
+                // coord
                 ctx.fillText(coord, this.size*j+this.gap*2, this.size*i+font_size+this.gap);
             }
         }

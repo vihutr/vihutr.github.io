@@ -88,7 +88,6 @@ function gameLoop(currentTime){
             }
             break;
         case 'overworld':
-            console.log(input.keys["ArrowRight"].down)
             player.vx = 0
             player.vy = 0
             player.handle_inputs(input)
@@ -102,7 +101,7 @@ function gameLoop(currentTime){
                 title.update();
                 break;
             case 'overworld':
-                player.update(ctx);
+                player.update(ctx, msPerFrame);
                 break;
         }
         accumulatedTime -= msPerFrame;

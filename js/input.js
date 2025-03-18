@@ -36,7 +36,7 @@ export default class InputHandler {
             if (k.lastEvent == 2) { k.lastEvent = null }
             k.update(dt);
             if (k.down) {
-                console.log("Key: %s, held: %d", key, k.holdTime)
+                // console.log("Key: %s, held: %d", key, k.holdTime)
                 // reset key when released beyond os repeat window
                 if (k.osRepeatTime > osRepeatWindow) {
                     k.down = false;
