@@ -31,7 +31,8 @@ titlebg.onload = function() {
 var plf = new Spritesheet('../images/plf.png', 48, 48, 0, 0)
 var player = new Player(plf)
 
-var grid = new Grid()
+var grid = new Grid(ctx)
+player.get_grid_dimensions(grid)
 
 var confirm1 = new Audio('../sounds/choice1.wav')
 var confirm2 = new Audio('../sounds/choice2.wav')

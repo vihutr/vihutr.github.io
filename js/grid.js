@@ -1,8 +1,10 @@
 export default class Grid {
-    constructor() {
+    constructor(ctx) {
         this.size = 50
         this.square_size = 48
         this.gap = this.size - this.square_size
+        this.w = Math.ceil(ctx.canvas.width/this.size - 1)
+        this.h = Math.ceil(ctx.canvas.height/this.size - 1)
     }
     draw(ctx) {
         // console.log('draw grid')
@@ -13,10 +15,10 @@ export default class Grid {
         ctx.fillRect(
             this.gap,
             this.gap,
-            Math.ceil(ctx.canvas.width/this.size - 1) * this.size+this.gap,
-            Math.ceil(ctx.canvas.height/this.size - 1) * this.size+this.gap)
-        for (let i = 0; i < (ctx.canvas.height/this.size)-1; i++) {
-            for (var j = 0; j < (ctx.canvas.width/this.size)-1; j++) {
+            this.w * this.size+this.gap,
+            this.h * this.size+this.gap)
+        for (let i = 0; i < this.h; i++) {
+            for (var j = 0; j < this.w; j++) {
                 //let t_x = this.size * j + this.size/4
                 //let t_y = this.size * i + this.size/4
                 let coord = `${j}, ${i}`

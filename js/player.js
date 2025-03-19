@@ -25,12 +25,13 @@ export default class Player {
 
         //limit
         if (this.x < 0) { this.x = 4 }
-        if (this.x > ctx.canvas.width - this.spritesheet.sprite_w - 4) { 
-            this.x = ctx.canvas.width - this.spritesheet.sprite_w - 4
+        if (this.x > this.limit_w) { 
+            this.x = this.limit_w
         }
         if (this.y < 0) { this.y = 4 }
-        if (this.y > ctx.canvas.height - this.spritesheet.sprite_h) { 
-            this.y = ctx.canvas.height - this.spritesheet.sprite_h }
+        if (this.y > this.limit_h) { 
+            this.y = this.limit_h
+        }
         this.startx = this.x
         this.starty = this.y
         // console.log('x: ' + this.x)
@@ -84,6 +85,8 @@ export default class Player {
                 this.endx = null
                 this.endy = null
                 this.last_direction = null
+                console.log("final pos")
+                console.log(this.x, this.y)
             }
             console.log(this.last_direction)
             if (this.last_direction == 0) {
@@ -120,5 +123,15 @@ export default class Player {
     correct_direction(){
         if (this.vy == 0){ this.last_direction = 0 }
         if (this.vx == 0){ this.last_direction = 1 }
+    }
+
+    get_grid_dimensions(grid){
+        this.grid_w = grid.w;
+        this.grid_h = grid.h;
+        this.limit_w = ((this.grid_w - 1) * this.grid_dist) + 4
+        this.limit_h = ((this.grid_h - 1) * this.grid_dist) + 4
+        console.log("grid dimen")
+        console.log(this.grid_w, this.grid_h)
+        console.log(this.limit_w, this.limit_h)
     }
 }
