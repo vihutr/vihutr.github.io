@@ -1,18 +1,30 @@
 export default class Grid {
     constructor(ctx) {
-        this.size = 50
-        this.square_size = 48
-        this.gap = this.size - this.square_size
-        this.w = Math.ceil(ctx.canvas.width/this.size - 1)
-        this.h = Math.ceil(ctx.canvas.height/this.size - 1)
+        this.size = 50;
+        this.square_size = 48;
+        this.gap = this.size - this.square_size;
+        this.w = Math.ceil(ctx.canvas.width/this.size - 1);
+        this.h = Math.ceil(ctx.canvas.height/this.size - 1);
+        this.canvas = document.createElement("canvas");
+        this.ctx = this.canvas.getContext("2d");
+
+        this.canvas.width = ctx.canvas.width;
+        this.canvas.height = ctx.canvas.height;
+        
+        this.createGrid();
     }
-    draw(ctx) {
-        // console.log('draw grid')
+
+    draw(ctx){
+        ctx.drawImage(this.canvas, 0, 0); // Just copy the pre-rendered grid
+    }
+
+    createGrid() {
+        console.log('create grid')
         let font_size = 14
-        ctx.textAlign = 'left' 
-        ctx.font = `${font_size}px MS Mono`;
-        ctx.fillStyle = `rgb(255,255,255)`;
-        ctx.fillRect(
+        this.ctx.textAlign = 'left' 
+        this.ctx.font = `${font_size}px MS Mono`;
+        this.ctx.fillStyle = `rgb(255,255,255)`;
+        this.ctx.fillRect(
             this.gap,
             this.gap,
             this.w * this.size+this.gap,
@@ -22,8 +34,8 @@ export default class Grid {
                 //let t_x = this.size * j + this.size/4
                 //let t_y = this.size * i + this.size/4
                 let coord = `${j}, ${i}`
-                ctx.fillStyle = `rgb(10,10,10)`;
-                ctx.fillRect(
+                this.ctx.fillStyle = `rgb(10,10,10)`;
+                this.ctx.fillRect(
                     2*this.gap+(this.size * j),
                     2*this.gap+(this.size * i),
                     this.square_size,
@@ -37,11 +49,12 @@ export default class Grid {
                 //     5
                 // )
 
-                ctx.fillStyle = `rgb(255,255,255)`;
+                this.ctx.fillStyle = `rgb(255,255,255)`;
                 // coord
-                ctx.fillText(coord, this.size*j+this.gap*2, this.size*i+font_size+this.gap);
+                this.ctx.fillText(coord, this.size*j+this.gap*2, this.size*i+font_size+this.gap);
             }
         }
+
         //for (let i = 0; i < (ctx.canvas.height / this.size) - 1; i++) {
         //    for (var j = 0; j < (ctx.canvas.width/ this.size) - 1; j++) {
         //    }
@@ -52,6 +65,6 @@ export default class Grid {
         //        ctx.font = "8px MS Mono";
         //        ctx.fillText(coord, t_x, t_y);
         //        ctx.fillStyle = `rgb(10,10,10)`;
-        //}gam
+        //}
     }
 }
