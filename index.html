@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+
 	<title>@vihutr</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="keywords" content="vihutr">
 	<meta name="description" content="vihutr">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/global.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <a name = "top"></a>
@@ -15,15 +16,9 @@
 <body>
 
     <div id = "container">
+        <div id = "header-container">
+        </div>
         <div id="content-wrap">
-
-            <header>
-                <div id = "top">
-                    <div id="logodiv"><a href = "index.html"> <img id ="logo" src="./images/logo.png"  onerror="this.style.display='none'">Vincent Tran</a></div>
-                </div>
-                <div id = "navbar-container">
-                </div>
-            </header>
 
             <div id = "main">
                 <div id = "maingrid">
@@ -33,10 +28,17 @@
                     -->
                     <div id = p1>
                         <p></p>
-                        <p></p>
+                        <br>
+                        <p>Hello, my name is Vincent Tran.</p>
+                        <p>I'm a programmer who solves problems that bother me (and hopefully others).</p>
+                        <br>
                     </div>
                     <div id = p2>
-                        <p></p>
+                        Currently looking for work and opportunities!
+                        Email (click to copy):  <a class="link-button" id="email" href="copy to clipboard" onclick="copyEmail(); return false;">moc.liamg@rtuhiv</a>
+                        <br />
+                        Resume: <a class="link-button" id="resume"
+                            href=https://docs.google.com/document/d/1x4gQT8d2groLLyiGS7Lpcj71TsVz2qCcb5rU_907Cn0/edit?usp=sharing>Google Docs</a>
                     </div>
 
                 </div>
@@ -44,12 +46,8 @@
 
         </div>
 
-        <footer id="footer">
-		    Created by vihutr
-	    </footer>
     </div>
-
-	<script src="js/navbar.js"></script>
+	<script src="js/index.js"></script>
 </body>
 
 </html>
