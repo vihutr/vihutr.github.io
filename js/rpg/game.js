@@ -62,7 +62,7 @@ function gameLoop(currentTime){
     
     // handle inputs based on scene
     // inputs are tied to dt over fps
-    input.update(deltaTime)
+    input.update(deltaTime);
     switch(scene){
         case 'title':
             if (input.keys["ArrowRight"] || input.keys["KeyD"]){
@@ -78,7 +78,6 @@ function gameLoop(currentTime){
             if (input.keys["Enter"].justPressed() || input.keys["Space"].justPressed() || input.keys["KeyZ"].justPressed()){
                 switch (title.selectedIndex){
                     case 0:
-                        console.log("z pressed on new game")
                         scene = "overworld";
                         confirm2.play();
                     break;

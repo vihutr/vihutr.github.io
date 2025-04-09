@@ -1,9 +1,13 @@
-
+#main{
+    max-width: 500px;
+}
 @media (min-width:820px){
     #main{
         font-size: calc(20px + (20 - 18) * ((100vw - 300px) / (4000 - 300)));
         line-height: calc(2em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
-        padding: 2vh 12vw 10vh 12vw;
+        /*padding: 2vh 12vw 10vh 12vw;*/
+        width: 50%;
+        margin: auto;
     }
     #maingrid{
         display:grid;
@@ -25,7 +29,9 @@
     #main{
         font-size: calc(18px + (20 - 18) * ((100vw - 300px) / (4000 - 300)));
         line-height: calc(2em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
-        padding: 2vh 8vw 10vh 8vw;
+        width: 75vw;
+        margin: auto;
+        max-width: 500px;
     }
     
     #maingrid{
@@ -59,4 +65,10 @@
 }
 #p2 {
     grid-area: p2;
+}
+
+/* for obfuscation */
+#email{
+    unicode-bidi:bidi-override;
+    direction:rtl;
 }

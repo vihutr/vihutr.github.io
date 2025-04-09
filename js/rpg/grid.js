@@ -15,7 +15,7 @@ export default class Grid {
     }
 
     draw(ctx){
-        ctx.drawImage(this.canvas, 0, 0); // Just copy the pre-rendered grid
+        ctx.drawImage(this.canvas, 0, 0);
     }
 
     createGrid() {

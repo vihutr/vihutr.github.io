@@ -1,4 +1,4 @@
-const osRepeatWindow = 35
+const osRepeatWindow = 17
 
 export default class InputHandler {
     constructor(keyList) {
@@ -7,6 +7,8 @@ export default class InputHandler {
         for (const keyName of keyList) {
             this.keys[keyName] = new KeyState()
         }
+
+        this.keyOrder = [];
         
         window.addEventListener("keydown", (e) =>  this.keyDownHandler(e))
         window.addEventListener("keyup", (e) =>  this.keyUpHandler(e))
@@ -17,6 +19,7 @@ export default class InputHandler {
         if (!this.keys[e.code].down && this.keys[e.code].lastEvent == null) {
             this.keys[e.code].down = true;
             this.keys[e.code].lastEvent = 0;
+            this.keyOrder.push(e.code);
         } else if (this.keys[e.code].down && this.keys[e.code].lastEvent == 1) {
             this.keys[e.code].lastEvent = 0;
             this.keys[e.code].osRepeatTime = 0;
@@ -30,6 +33,19 @@ export default class InputHandler {
         }
     }
 
+    removeFromOrder(key) {
+        const index = this.keyOrder.indexOf(key);
+        if (index > -1){
+            this.keyOrder.splice(index, 1);
+        }
+        //console.log("removed {key}");
+        //console.log(this.keyOrder)
+    }
+
+    getLatestKey() {
+        return this.keyOrder[keyOrder.length - 1];
+    }
+
     update(dt) {
         for (let key in this.keys){
             let k = this.keys[key]
@@ -39,6 +55,7 @@ export default class InputHandler {
                 // console.log("Key: %s, held: %d", key, k.holdTime)
                 // reset key when released beyond os repeat window
                 if (k.osRepeatTime > osRepeatWindow) {
+                    this.removeFromOrder(key);
                     k.down = false;
                     k.holdTime = 0;
                     k.osRepeatTime = 0;
