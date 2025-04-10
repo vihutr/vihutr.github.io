@@ -1,5 +1,5 @@
 #main{
-    max-width: 500px;
+    max-width: 600px;
 }
 @media (min-width:820px){
     #main{
@@ -12,9 +12,8 @@
     #maingrid{
         display:grid;
         grid-template-areas: 
-            'p1'
-            'p2';
-        column-gap: 5vw;
+            'p1 p2';
+        column-gap: 1vw;
         row-gap: 3px;
         width: 100vw;
         max-width: 100%;
@@ -37,34 +36,21 @@
     #maingrid{
         display:grid;
         grid-template-areas: 
-            'avatar'
-            'p1'
-            'p2';
+            'p1 p2';
         column-gap: 3px;
         row-gap: 3px;
         width: 100vw;
         max-width: 100%;
         height:auto;
     }
-    #portrait{
-        max-width: 100%;
-        max-height: 50vw;
-        width: 100%;
-        height: auto;
-    }
 }
 
-#portraitimg{
-    grid-area: avatar;
-    text-align: center;
-    justify-content: center;
-    width: 13em;
-}
-#p1 {
+#contact-labels {
     grid-area: p1;
 }
-#p2 {
+#contact-links {
     grid-area: p2;
+    justify-content: end;
 }
 
 /* for obfuscation */

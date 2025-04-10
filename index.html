@@ -16,38 +16,18 @@
 <body>
 
     <div id = "container">
-        <div id = "header-container">
+        <div id = "nav">
+            <a class="link-button" href="index.html" onclick="setMain(getProfile); return false;">
+                <img id ="logo" src="./images/logo.png"  onerror="this.style.display='none'">
+                vihutr
+            </a>
+            <a class="link-button" id="link1" href="Projects.html" onclick="setMain(getProjects); return false;">
+                Projects
+            </a>
         </div>
-        <div id="content-wrap">
-
-            <div id = "main">
-                <div id = "maingrid">
-                    <!--<div id = "portraitimg">
-                        <p id = "portraitp"><img id="portrait" src="https://gdurl.com/uBKF"></p>
-                    </div>
-                    -->
-                    <div id = p1>
-                        <p></p>
-                        <br>
-                        <p>Hello, my name is Vincent Tran.</p>
-                        <p>I'm a programmer who solves problems that bother me (and hopefully others).</p>
-                        <br>
-                    </div>
-                    <div id = p2>
-                        Currently looking for work and opportunities!
-                        Email (click to copy):  <a class="link-button" id="email" href="copy to clipboard" onclick="copyEmail(); return false;">moc.liamg@rtuhiv</a>
-                        <br />
-                        Resume: <a class="link-button" id="resume"
-                            href=https://docs.google.com/document/d/1x4gQT8d2groLLyiGS7Lpcj71TsVz2qCcb5rU_907Cn0/edit?usp=sharing>Google Docs</a>
-                    </div>
-
-                </div>
-            </div>
-
+        <div id = "main">
         </div>
-
     </div>
 	<script src="js/index.js"></script>
 </body>
-
 </html>

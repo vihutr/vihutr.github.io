@@ -8,27 +8,29 @@ body
     color: white;
     margin: auto;
 }
-#top{
-	font-size: calc(30px + (40 - 18) * ((100vw - 300px) / (4000 - 300)));
-    text-align: left;
-    padding-left: .2vw;
-    padding-right: .2vw;
-    padding-top: .2vh;
-    padding-bottom: .2vh;
-    /*
-    border-color: gold rgb(40, 40, 40) white ;
-    border-top-style: solid;
-    border-bottom-style: solid;
-    */
-    text-align: center;
-    color: white;
+
+#nav{
+    max-width: 33%;
+    margin: auto;
+    display:grid;
+    grid-template-areas: 
+        'logo link1';
+    height:auto;
 }
-#logodiv{
-    display: inline;
-}
+
 #logo{
-    height: 12vh;
+    grid-area: logo;
+    display: inline;
+    font: 2.2rem;
+    text-align: left;
+    text-align: center;
     vertical-align: middle;
+    color: white;
+    height: 12vh;
+}
+
+#link1{
+    grid-area: link1;
 }
 
 a:link{
@@ -39,6 +41,7 @@ a:visited{
     color: white;
     text-decoration: none;
 }
+
 a{
     -webkit-transition: color .2s;
     -moz-transition:    color .2s;
@@ -50,27 +53,7 @@ a:hover:not(.active){
     color:gold;
 }
 
-#nav{
-    border-bottom-style: solid;
-    border-width: thin;
-    max-width: 50%;
-    margin: auto;
-}
-
-#nav ul{
-    margin: 0;
-    padding-left: 1%;
-	list-style:none;
-	display:flex;
-    justify-content: center;
-}
-
-#nav li{
-	font-size: calc(12px + (14 - 8) * ((100vw - 300px) / (1600 - 300)));
-    line-height: 8vh;
-}
-
-li a{
+a{
     -webkit-transition: color .2s;
     -moz-transition:    color .2s;
     -ms-transition:     color .2s;
@@ -80,10 +63,10 @@ li a{
     padding: 0px 16px;
     text-decoration: none;
 }
-li a.active{
+a.active{
     color:rgb(75, 75, 75);
 }
-li a:hover:not(.active){
+a:hover:not(.active){
     color:gold;
 }
 
@@ -108,7 +91,8 @@ button:hover{
     -ms-transition:     color .2s;
     -o-transition:      color .2s;
     transition:         color .2s;
-	font-size: calc(14px + (40 - 14) * ((100vw - 300px) / (4000 - 300)));;
+	/*font-size: calc(14px + (40 - 14) * ((100vw - 300px) / (4000 - 300)));*/
+
     background-color: rgb(70, 70, 70);
     padding: 7px;
     margin: 10px;
@@ -125,10 +109,10 @@ button:hover{
     position: relative;
     min-height: 100vh;
 }
+/*
 #content-wrap{
     padding-bottom: 10vh;
 }
-/*
 #footer{
     background-color:rgb(40, 40, 40);
     color:rgb(131, 125, 125);
