@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <title>Alice</title>
-    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
@@ -24,41 +23,6 @@
 </head>
 
 <body>
-<py-script>
-    from js import document 
-    from pyodide import create_proxy
-    import re
-    cipher = {'\n': '%', ' ': '@', '.': 'K', '!': 'Z', '?': 'o', "'": '}', '(': 'M', ')': ']', ',': 'k', '-': '`', '~': '·C║·', '♪': '·Cv·', 'a': 'b', 'b': 'c', 'c': 'd', 'd': 'e', 'e': 'f', 'f': 'g', 'g': 'h', 'h': 'i', 'i': 'q', 'j': 'r', 'k': 's', 'l': 't', 'm': 'u', 
-    'n': 'v', 'o': 'w', 'p': 'x', 'q': '▀', 'r': '·', 's': '╚', 't': 'Ё', 'u': '╢', 'v': '╣', 'w': '╤', 'x': '╥', 'y': '╦', 'z': '╧', 'A': 'а', 'B': 'б', 'C': 'ц', 'D': 'д', 'E': 'е', 'F': 'ф', 'G': 'г', 'H': 'х', 'I': 'и', 'J': 'я', 'K': 'р', 'L': 'с', 'M': 'т', 'N': 'у', 'O': 'ж', 'P': 'в', 'Q': 'ь', 'R': 'ы', 'S': 'Б', 'T': 'Ц', 'U': 'Д', 'V': 'Е', 'W': 'Ф', 'X': 'Г', 'Y': 'Х', 'Z': 'И', '5': 'У', '0': 'П'}
-    dcipher = {'%': '\n', '@': ' ', 'K': '.', 'Z': '!', 'o': '?', '}': "'", 'M': '(', ']': ')', 'k': ',', '`': '-', '·C║·': '~', '·Cv·': '♪', 'b': 'a', 'c': 'b', 'd': 'c', 'e': 'd', 'f': 'e', 'g': 'f', 'h': 'g', 'i': 'h', 'q': 'i', 'r': 'j', 's': 'k', 't': 'l', 'u': 'm', 
-    'v': 'n', 'w': 'o', 'x': 'p', '▀': 'q', '⌡': 'r', '·': 'r', '╚': 's', 'Ё': 't', '╢': 'u', '╣': 'v', '╤': 'w', '╥': 'x', '╦': 'y', '╧': 'z', 'a': 'A', 'а': 'A', 'б': 'B', 'ц': 'C', 'д': 'D', 'е': 'E', 'ф': 'F', 'г': 'G', 'х': 'H', 'и': 'I', 'я': 'J', 'р': 'K', 'с': 'L', 'т': 'M', 'у': 'N', 'ж': 'O', 'в': 'P', 'ь': 'Q', 'ы': 'R', 'Б': 'S', 'Ц': 'T', 'Д': 'U', 'Е': 'V', 'Ф': 'W', 'Г': 'X', 'X': 'Y', 'Х': 'Y', 'И': 'Z', 'У': '5', 'П': '0'}
-    
-    def convert(word, dict):
-        output = ''
-        for c in word:
-            d = '_'
-            if c in dict:
-                d = dict[c]
-            output += d
-        return(output)
-    
-    def encrypt(*args, **kwargs):
-        word = document.getElementById('input').value
-        output = convert(word, cipher)
-        pyscript.write("output", output)
-    
-    def decipher(*args, **kwargs):
-        word = document.getElementById('input').value
-        output = convert(word, dcipher)
-        pyscript.write("output", output)
-    
-    encrypt_proxy = create_proxy(encrypt)
-    decipher_proxy = create_proxy(decipher)
-    
-    document.getElementById("encrypt").addEventListener("click", encrypt_proxy)
-    document.getElementById("decipher").addEventListener("click", decipher_proxy)
-</py-script>
-
     <div class="container">
         <br />
         <h1 class="text-center">Alice</h1>
@@ -68,8 +32,8 @@
         <br />
 
         <center>
-            <button id="encrypt" type="submit"  class="btn btn-info">Encrypt</button>
-            <button id="decipher" type="submit"  class="btn btn-info">Decipher</button>
+            <button id="encrypt" type="submit"  class="btn btn-info" onclick="encrypt();">Encrypt</button>
+            <button id="decipher" type="submit"  class="btn btn-info" onclick="decipher();">Decipher</button>
         </center>
         
         <br />
@@ -77,6 +41,6 @@
         <h4>Converted Text:</h4>
         <textarea id="output" class="form-control" rows="4" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Result"></textarea></p>
     </div>
-    
+	<script src="js/alice.js"></script>
 </body>
 </html>
