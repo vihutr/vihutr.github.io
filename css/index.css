@@ -1,54 +1,37 @@
-    #main{
-        /*
-        font-size: calc(20px + (20 - 18) * ((100vw - 300px) / (4000 - 300)));
-        line-height: calc(2em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
-        /*padding: 2vh 12vw 10vh 12vw;*/
-        font-size: 18px;
-        line-height: 2.4em;
-        max-width: 600px;
-        padding: 1vw;
-        margin: auto;
-    }
-@media (min-width:900px){
-    #maingrid{
+#main{
+    font-size: 18px;
+    line-height: 2.4em;
+    max-width: 600px;
+    padding: 1vw;
+    margin: auto;
+}
+#maingrid{
         display:grid;
+        grid-template-columns: 1fr 1fr;
         grid-template-areas: 
             'p1 p2';
+        line-height: 2.4em;
         column-gap: 1vw;
         row-gap: 3px;
         width: 100vw;
         max-width: 100%;
         height:auto;
-    }
-    #portrait{
-        max-width: 100%;
-        max-height: 50vh;
-    }
-}
-@media (max-width:900px){
-    #maingrid{
-        display:grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: 
-            'p1 p2';
-        column-gap: 3px;
-        row-gap: 3px;
-        width: 100vw;
-        max-width: 100%;
-        height:auto;
-    }
 }
 
-#contact-start {
+#contact-start{
     text-align: center;
 }
 
-#contact-labels {
+#contact-labels{
     grid-area: p1;
     max-width: 50em;
 }
 
-#contact-links {
+#contact-labels li{
+    text-align: left;
+}
+
+#contact-links{
     grid-area: p2;
     max-width: 50rem;
 }
@@ -62,3 +45,16 @@
     unicode-bidi:bidi-override;
     direction:rtl;
 }
+
+@media (max-width:620px){
+    #main{
+        text-align: center;
+    }
+    #contact-labels{
+        padding: 2vw;
+    }
+    #contact-links{
+        padding: 2vw;
+    }
+}
+

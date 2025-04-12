@@ -1,8 +1,6 @@
 body
 {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
-    /*line-height: calc(3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));*/
     color: rgb(255,255,255);
     background-color: rgb(25,25,25);
     color: white;
@@ -10,6 +8,7 @@ body
 }
 
 #nav{
+    font-size: 30px;
     max-width: 600px;
     margin: auto;
     display:grid;
@@ -18,6 +17,13 @@ body
         'logo link1';
     height:auto;
 }
+
+@media (max-width:620px){
+    #nav{
+        padding: 2vw;
+    }
+}
+
 
 #logo{
     grid-area: logo;

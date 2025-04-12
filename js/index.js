@@ -20,7 +20,7 @@ function getProfile() {
             <div id = "maingrid">
                 <ul id = contact-labels>
                     <li>Github:</li>
-                    <li>Email (click to copy):</li>
+                    <li>Email:</li>
                     <li>Resume:</li>
                 </ul>
                 <ul id = contact-links>
