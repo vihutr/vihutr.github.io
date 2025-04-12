@@ -4,7 +4,7 @@ body
 	font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
     /*line-height: calc(3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));*/
     color: rgb(255,255,255);
-    background-color: rgb(50,50,50);
+    background-color: rgb(25,25,25);
     color: white;
     margin: auto;
 }
