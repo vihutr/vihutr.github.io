@@ -1,14 +1,15 @@
-#main{
-    max-width: 600px;
-}
-@media (min-width:820px){
     #main{
+        /*
         font-size: calc(20px + (20 - 18) * ((100vw - 300px) / (4000 - 300)));
         line-height: calc(2em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
         /*padding: 2vh 12vw 10vh 12vw;*/
-        width: 50%;
+        font-size: 18px;
+        line-height: 2.4em;
+        max-width: 600px;
+        padding: 1vw;
         margin: auto;
     }
+@media (min-width:900px){
     #maingrid{
         display:grid;
         grid-template-areas: 
@@ -24,17 +25,10 @@
         max-height: 50vh;
     }
 }
-@media (max-width:820px){
-    #main{
-        font-size: calc(18px + (20 - 18) * ((100vw - 300px) / (4000 - 300)));
-        line-height: calc(2em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
-        width: 75vw;
-        margin: auto;
-        max-width: 500px;
-    }
-    
+@media (max-width:900px){
     #maingrid{
         display:grid;
+        grid-template-columns: 1fr 1fr;
         grid-template-areas: 
             'p1 p2';
         column-gap: 3px;
@@ -45,12 +39,22 @@
     }
 }
 
+#contact-start {
+    text-align: center;
+}
+
 #contact-labels {
     grid-area: p1;
+    max-width: 50em;
 }
+
 #contact-links {
     grid-area: p2;
-    justify-content: end;
+    max-width: 50rem;
+}
+
+#contact-links li{
+    text-align: right;
 }
 
 /* for obfuscation */

@@ -10,9 +10,10 @@ body
 }
 
 #nav{
-    max-width: 33%;
+    max-width: 600px;
     margin: auto;
     display:grid;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas: 
         'logo link1';
     height:auto;
@@ -95,7 +96,7 @@ button:hover{
 
     background-color: rgb(70, 70, 70);
     padding: 7px;
-    margin: 10px;
+    margin: 1px;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -107,22 +108,4 @@ button:hover{
 
 #container{
     position: relative;
-    min-height: 100vh;
 }
-/*
-#content-wrap{
-    padding-bottom: 10vh;
-}
-#footer{
-    background-color:rgb(40, 40, 40);
-    color:rgb(131, 125, 125);
-	font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (4000 - 300)));
-    font-size: 1.2vh;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 3vh;
-    line-height: 1vh;
-}
-*/

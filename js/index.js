@@ -14,9 +14,9 @@ function displayHeader() {
 
 function getProfile() {
     html = `
-            <p>Hello, my name is Vincent Tran, or vihutr (vi-hue-tur).</p>
-            <p>I'm a programmer who enjoys solving problems that bother me (and hopefully others).</p>
-            <p>Currently looking for work and opportunities!</p>
+            <p>Hello, my name is Vincent Tran.</p>
+            <p>I'm a programmer who enjoys solving problems that bother me (and others).</p>
+            <p id=contact-start>Currently looking for work and opportunities!</p>
             <div id = "maingrid">
                 <ul id = contact-labels>
                     <li>Github:</li>
