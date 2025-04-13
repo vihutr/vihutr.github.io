@@ -1,3 +1,8 @@
+/*
+@font-face {
+    font-family: "luxi-mono";
+    src: url("../luximr.ttf");
+}*/
 body
 {
 	font-family: Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
@@ -17,6 +22,8 @@ body
         'link0 link1';
     height:auto;
     align-items: center;
+    text-align: center;
+    vertical-align: middle;
 }
 
 #logo{
@@ -35,18 +42,14 @@ body
 
 #link0{
     grid-area: link0;
-    display: inline;
-    font: 2.2rem;
-    text-align: left;
-    text-align: center;
-    vertical-align: middle;
-    color: white;
+    position: relative;
+    border-radius: 15px;
 }
 
 #link1{
     grid-area: link1;
     position: relative;
-    text-align: center;
+    border-radius: 15px;
 }
 
 a:link{
@@ -109,6 +112,7 @@ button:hover{
     transition:         color .2s;
 	/*font-size: calc(14px + (40 - 14) * ((100vw - 300px) / (4000 - 300)));*/
 
+    border-radius: 5px;
     background-color: rgb(70, 70, 70);
     padding: 7px;
     margin: 1px;

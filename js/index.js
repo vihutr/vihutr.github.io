@@ -62,11 +62,11 @@ function copyEmail() {
     floatMsg.textContent = 'Email Copied!';
     floatMsg.style.position = 'fixed';
     floatMsg.style.backgroundColor = 'rgb(40, 40, 40)';
-    floatMsg.style.border = '1px solid black';
+    floatMsg.style.padding = '10px';
     floatMsg.style.zIndex = '1000';
     document.body.appendChild(floatMsg);
     floatMsg.style.left = rect.left + window.scrollX - floatMsg.clientWidth - 5 + 'px';
-    floatMsg.style.top = rect.top + window.scrollY + rect.height/4  + 'px';
+    floatMsg.style.top = rect.top + window.scrollY + 'px';
     let msgTimer = 500;
     setTimeout(function() {
         floatMsg.remove();
