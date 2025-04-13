@@ -1,17 +1,3 @@
-/*
-function displayHeader() {
-    fetch("header.html")
-        .then(response => response.text())
-        .then(data => {
-            // Insert into all elements with the matching ID
-            document.querySelectorAll("#header-container").forEach(el => {
-                el.innerHTML = data;
-            });
-        })
-        .then(() => {highlightActiveLink()});
-}
-*/
-
 function getProfile() {
     html = `
             <p>Hello, my name is Vincent Tran.</p>
@@ -25,7 +11,7 @@ function getProfile() {
                 </ul>
                 <ul id = contact-links>
                     <li><a class="link-button" id="github"href="https://github.com/vihutr">vihutr</a></li>
-                    <li><a class="link-button" id="email" href="copy to clipboard" onclick="copyEmail(); return false;">moc.liamg@rtuhiv</a></li>
+                    <li><a class="link-button" id="email" href="click to copy" onclick="copyEmail(); return false;">moc.liamg@rtuhiv</a></li>
                     <li><a class="link-button" id="resume"
                             href=https://docs.google.com/document/d/1x4gQT8d2groLLyiGS7Lpcj71TsVz2qCcb5rU_907Cn0/edit?usp=sharing>Google Docs</a></li>
                 </ul>
@@ -36,9 +22,15 @@ function getProfile() {
 
 function getProjects() {
     html = `
-        <p>WIP</p>
+        <div id="projects">
+            
+        </div>
     `;
     return html;
+}
+
+function project() {
+    ;
 }
 
 function setMain(func) {
@@ -54,9 +46,31 @@ function reverseString(str) {
     return str.split("").reverse().join("");
 }
 
+function floatingMessage(str) {
+    let fmsg = document.createElement('div');
+    fmsg.textContent = str;
+    fmsg.style.position = 'fixed';
+    fmsg.style.left = event.clientX 
+}
+
 function copyEmail() {
-    var email = document.getElementById("email").text;
-    copyToClipboard(reverseString(email));
+    const email = document.getElementById("email");
+    copyToClipboard(reverseString(email.text));
+
+    const rect = email.getBoundingClientRect();
+    const floatMsg = document.createElement('div');
+    floatMsg.textContent = 'Email Copied!';
+    floatMsg.style.position = 'fixed';
+    floatMsg.style.backgroundColor = 'rgb(40, 40, 40)';
+    floatMsg.style.border = '1px solid black';
+    floatMsg.style.zIndex = '1000';
+    document.body.appendChild(floatMsg);
+    floatMsg.style.left = rect.left + window.scrollX - floatMsg.clientWidth - 5 + 'px';
+    floatMsg.style.top = rect.top + window.scrollY + rect.height/4  + 'px';
+    let msgTimer = 500;
+    setTimeout(function() {
+        floatMsg.remove();
+    }, msgTimer);
 }
 
 window.mobileAndTabletCheck = function() {
