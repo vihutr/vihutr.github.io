@@ -1,7 +1,7 @@
 function getProfile() {
     html = `
             <p>Hello, my name is Vincent Tran.</p>
-            <p>I'm a programmer who enjoys solving problems that bother me (and others).</p>
+            <p>I'm a programmer who enjoys solving problems that bother me (and maybe someone else too).</p>
             <p id=contact-start>Currently looking for work and opportunities!</p>
             <div id = "maingrid">
                 <ul id = contact-labels>
@@ -35,7 +35,7 @@ function project() {
 
 function setMain(func) {
     document.getElementById('main').innerHTML = func()
-    console.log(`called ${func.name}`)
+    //console.log(`called ${func.name}`)
 }
 
 function copyToClipboard(text) {

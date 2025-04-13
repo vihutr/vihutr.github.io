@@ -1,6 +1,6 @@
 body
 {
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-family: Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(255,255,255);
     background-color: rgb(25,25,25);
     color: white;
@@ -14,8 +14,17 @@ body
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
-        'logo link1';
+        'link0 link1';
     height:auto;
+    align-items: center;
+}
+
+#logo{
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1000;
 }
 
 @media (max-width:620px){
@@ -24,20 +33,20 @@ body
     }
 }
 
-
-#logo{
-    grid-area: logo;
+#link0{
+    grid-area: link0;
     display: inline;
     font: 2.2rem;
     text-align: left;
     text-align: center;
     vertical-align: middle;
     color: white;
-    height: 12vh;
 }
 
 #link1{
     grid-area: link1;
+    position: relative;
+    text-align: center;
 }
 
 a:link{
