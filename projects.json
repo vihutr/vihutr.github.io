@@ -1,0 +1,18 @@
+{   
+    "Projects": [
+        {   
+            "name": "Dijkstra Pathfinding Variant",
+            "filename": "dijkstra-variant-pyg",
+            "links": {
+                "github": "https://github.com/vihutr/dijkstra-variant-pyg"
+            }
+        },
+        {
+            "name": "Spotify Pygame",
+            "filename": "spotipygame",
+            "links": {
+                "github": "https://github.com/vihutr/spotipygame"
+            }
+        }
+    ]
+}

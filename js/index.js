@@ -1,40 +1,58 @@
-function getProfile() {
-    html = `
-            <p>Hello, my name is Vincent Tran.</p>
-            <p>I'm a programmer who enjoys solving problems that bother me (and maybe someone else too).</p>
-            <p id=contact-start>Currently looking for work and opportunities!</p>
-            <div id = "maingrid">
-                <ul id = contact-labels>
-                    <li>Github:</li>
-                    <li>Email:</li>
-                    <li>Resume:</li>
-                </ul>
-                <ul id = contact-links>
-                    <li><a class="link-button" id="github"href="https://github.com/vihutr">vihutr</a></li>
-                    <li><a class="link-button" id="email" href="click to copy" onclick="copyEmail(); return false;">moc.liamg@rtuhiv</a></li>
-                    <li><a class="link-button" id="resume"
-                            href=https://docs.google.com/document/d/1x4gQT8d2groLLyiGS7Lpcj71TsVz2qCcb5rU_907Cn0/edit?usp=sharing>Google Docs</a></li>
-                </ul>
-            </div>
-    `;
-    return html;
+let aboutHTML = `
+<p>Hello, my name is Vincent Tran.</p>
+<p>I'm a programmer who enjoys solving problems that bother me (and maybe someone else too).</p>
+<p id=contact-start>Currently looking for work and opportunities!</p>
+<div id = "maingrid">
+    <ul id = contact-labels>
+        <li>Github:</li>
+        <li>Email:</li>
+        <li>Resume:</li>
+    </ul>
+    <ul id = contact-links>
+        <li><a class="link-button" id="github"href="https://github.com/vihutr">vihutr</a></li>
+        <li><a class="link-button fake-link" id="email" href="click to copy" onclick="copyEmail(); return false;">moc.liamg@rtuhiv</a></li>
+        <li><a class="link-button" id="resume"
+                href=https://docs.google.com/document/d/1x4gQT8d2groLLyiGS7Lpcj71TsVz2qCcb5rU_907Cn0/edit?usp=sharing>Google Docs</a></li>
+    </ul>
+</div>
+`
+
+let projectsHTML = `
+<div id = "project-container" class = "project-container">
+`
+
+function getJSON(url, callback) {
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            callback(JSON.parse(xmlHttp.responseText));
+        }
+  }
+  xmlHttp.open('GET', url, true);
+  xmlHttp.send(null);
 }
 
-function getProjects() {
-    html = `
-        <div id="projects">
-            
-        </div>
-    `;
-    return html;
+function projectHTML(obj) {
+  html = `<div class="project">
+            <div class="project-image" style="background-image: url('images/projects/${obj['filename']}.png')"></div>
+          </div>`;
+  return html;
 }
 
-function project() {
-    ;
+function getProjects(data){
+    // selectGame(document.getElementById('projects').children[0]);
+
+    console.log('begin testfunc');
+    for (const proj of data['Projects']) {
+        projectsHTML += projectHTML(proj);
+    }
+    projectsHTML += "</div>"
 }
 
-function setMain(func) {
-    document.getElementById('main').innerHTML = func()
+getJSON('./projects.json', getProjects)
+
+function setMain(html) {
+    document.getElementById('main').innerHTML = html;
     //console.log(`called ${func.name}`)
 }
 
@@ -79,4 +97,12 @@ window.mobileAndTabletCheck = function() {
   return check;
 };
 
-setMain(getProfile)
+setMain(aboutHTML)
+
+// disable dragging on fake links
+const btns = document.getElementsByClassName("fake-link");
+console.log(btns);
+Array.prototype.forEach.call(btns, function(btn) {
+    btn.addEventListener('dragstart', (e) => e.preventDefault())
+});
+

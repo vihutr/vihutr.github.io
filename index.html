@@ -8,20 +8,19 @@
 	<meta name="keywords" content="vihutr">
 	<meta name="description" content="vihutr">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/global.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <a name = "top"></a>
 </head>
 
 <body>
 
-    <div id = "container">
+    <div id = "body-container">
         <div id = "nav">
-            <img id ="logo" src="./images/logo.png" alt="vihutr"  onerror="this.style.display='none'">
-            <a class="link-button" id="link0" href="index.html" onclick="setMain(getProfile); return false;">
-                vihutr
+                <div id ="logo"></div>
+            <a class="link-button fake-link" id="link0" href="index" onclick="setMain(aboutHTML); return false;">
+                About
             </a>
-            <a class="link-button" id="link1" href="Projects.html" onclick="setMain(getProjects); return false;">
+            <a class="link-button fake-link" id="link1" href="Projects" onclick="setMain(projectsHTML); return false;">
                 Projects
             </a>
         </div>
