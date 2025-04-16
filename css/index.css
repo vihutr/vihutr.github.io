@@ -95,27 +95,11 @@ a{
     -o-transition:      color .2s;
     transition:         color .2s;
     text-align: center;
-    padding: 0px 16px;
+    margin: 0px 16px;
     text-decoration: none;
 }
-a.active{
-    color:rgb(75, 75, 75);
-}
-a:hover:not(.active){
-    color:gold;
-}
 
-button{
-    padding: 5px;
-    color:white;
-    background-color: rgb(75, 75, 75);
-    display: inline-flex;
-    align-items: center;
-}
-button:hover{
-    color:white;
-}
-.link-button{
+.custom-button{
     -webkit-transition: background-color .2s;
     -moz-transition:    background-color .2s;
     -ms-transition:     background-color .2s;
@@ -127,17 +111,20 @@ button:hover{
     -o-transition:      color .2s;
     transition:         color .2s;
 	/*font-size: calc(14px + (40 - 14) * ((100vw - 300px) / (4000 - 300)));*/
-
+        
+    display: inline;
+    cursor: pointer;
     border-radius: 5px;
     background-color: rgb(70, 70, 70);
     padding: 7px;
     margin: 1px;
     white-space: nowrap;
     overflow: hidden;
+    position: relative;
 }
 
-.link-button:hover{
-    color: rgb(0, 0, 0);
+.custom-button:hover{
+    color: gold;
     background-color: rgb(40, 40, 40);
 }
 
@@ -154,7 +141,7 @@ button:hover{
 }
 
 /* about */
-#maingrid{
+#about-grid{
         display:grid;
         grid-template-columns: 1fr 1fr;
         grid-template-areas: 

@@ -23,12 +23,12 @@ title.alpha = 0.5
 title.x = canvas.width/2 - title.width/2
 title.y = canvas.height/2 - title.height/2
 let titlebg = new Image()
-titlebg.src = '../images/Plain.png'
+titlebg.src = '../images/rpg/Plain.png'
 titlebg.onload = function() {
     console.log('titlebg loaded')
 }
 // file, spriteWidth, spriteHeight, margin, spacing
-var plf = new Spritesheet('../images/plf.png', 48, 48, 0, 0)
+var plf = new Spritesheet('../images/rpg/plf.png', 48, 48, 0, 0)
 var player = new Player(plf)
 
 var grid = new Grid(ctx)
