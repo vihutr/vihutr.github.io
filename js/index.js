@@ -1,6 +1,6 @@
 let aboutHTML = `
-<p>Hello, my name is Vincent Tran.</p>
-<p>I'm a programmer who enjoys solving problems that bother me (and maybe someone else too).</p>
+<p>Hello, my name is Vincent Tran, aka vihutr.</p>
+<p>I'm a programmer who enjoys creating things that interest me and solving problems that bother me (and maybe others as well).</p>
 <p id=contact-start>Currently looking for work and opportunities!</p>
 <div id = "about-grid">
     <ul id = contact-labels>
@@ -10,7 +10,7 @@ let aboutHTML = `
     </ul>
     <ul id = contact-links>
         <li><a class="custom-button" id="github"href="https://github.com/vihutr">vihutr</a></li>
-        <li><div class="custom-button fake-link" id="email" href="click to copy" onclick="copyEmail(); return false;">moc.liamg@rtuhiv</div></li>
+        <li><div class="custom-button fake-link" id="email" href="click to copy" onclick="copyEmail(); return false;">moc.liamg@rtuhiv<img id="copy-img" src="../images/copy.png"></img></div></li>
         <li><a class="custom-button" id="resume"
                 href=https://docs.google.com/document/d/1x4gQT8d2groLLyiGS7Lpcj71TsVz2qCcb5rU_907Cn0/edit?usp=sharing>Google Docs</a></li>
     </ul>
@@ -73,13 +73,13 @@ function floatingMessage(str) {
 
 function copyEmail() {
     const email = document.getElementById("email");
-    copyToClipboard(reverseString(email.innerHTML));
+    copyToClipboard(reverseString("moc.liamg@rtuhiv"));
 
     const rect = email.getBoundingClientRect();
     const floatMsg = document.createElement('div');
     floatMsg.textContent = 'Email Copied!';
     floatMsg.style.position = 'fixed';
-    floatMsg.style.backgroundColor = 'rgb(40, 40, 40)';
+    floatMsg.style.backgroundColor = 'rgb(25, 25, 25)';
     floatMsg.style.padding = '10px';
     floatMsg.style.zIndex = '1000';
     document.body.appendChild(floatMsg);
