@@ -73,7 +73,7 @@ function floatingMessage(str) {
 
 function copyEmail() {
     const email = document.getElementById("email");
-    copyToClipboard(reverseString(email.text));
+    copyToClipboard(reverseString(email.innerHTML));
 
     const rect = email.getBoundingClientRect();
     const floatMsg = document.createElement('div');
