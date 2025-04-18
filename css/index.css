@@ -185,7 +185,8 @@ p + p {
 @media (max-width:620px) {
     #main {
         text-align: center;
-        font-size: 4.2vw;
+        font-size: 3.4vw;
+        padding: 1vw 5vw 0vw 5vw;
     }
     #logo {
         height: auto;
@@ -194,10 +195,10 @@ p + p {
         min-width: 13vw;
     }
     #contact-labels {
-        padding: 2vw;
+        padding: 7vw;
     }
     #contact-links {
-        padding: 2vw;
+        padding: 7vw;
     }
     #nav {
         font-size: 5vw;
