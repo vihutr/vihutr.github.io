@@ -26,6 +26,7 @@ body {
     font-size: 30px;
     max-width: 600px;
     margin: auto;
+    margin-top: 16px;
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
@@ -91,7 +92,6 @@ a {
     -o-transition:      color .2s;
     transition:         color .2s;
     text-align: center;
-    margin: 0px 16px;
     text-decoration: none;
 }
 
@@ -112,10 +112,10 @@ a {
     border-radius: 5px;
     background-color: rgb(70, 70, 70);
     padding: 7px;
-    margin: 1px;
     white-space: nowrap;
     overflow: hidden;
     position: relative;
+    vertical-align: middle;
 }
 
 .custom-button:hover {
@@ -142,37 +142,34 @@ p + p {
 
 /* about */
 #about-grid {
-        display:grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: 
-            'p1 p2';
-        line-height: 2.4em;
-        column-gap: 1vw;
-        row-gap: 3px;
-        width: 100vw;
-        max-width: 100%;
-        height:auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: row dense;
+    line-height: 2em;
+    width: 100vw;
+    height: auto;
+    max-width: 100%;
 }
 
-#contact-start {
-    text-align: center;
+.icon {
+    display: inline-block;
+    vertical-align: middle;
 }
 
-#contact-labels {
-    grid-area: p1;
+.icon-text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.contact-label {
+    grid-column-start: 1;
     max-width: 50em;
-}
-
-#contact-labels li {
     text-align: left;
 }
 
-#contact-links {
-    grid-area: p2;
-    max-width: 50rem;
-}
-
-#contact-links li {
+.contact-link {
+    grid-column-start: 2;
+    max-width: 50em;
     text-align: right;
 }
 
@@ -183,6 +180,10 @@ p + p {
 }
 
 @media (max-width:620px) {
+    .custom-button{
+        padding: 1vw;
+        border-radius: 1vw;
+    }
     #main {
         text-align: center;
         font-size: 3.4vw;
@@ -194,11 +195,14 @@ p + p {
         min-height: 13vw;
         min-width: 13vw;
     }
-    #contact-labels {
-        padding: 7vw;
+    #about-grid {
+        line-height: 2vw;
     }
-    #contact-links {
-        padding: 7vw;
+    .contact-label {
+        padding: 2vw;
+    }
+    .contact-link {
+        padding: 2vw;
     }
     #nav {
         font-size: 5vw;
