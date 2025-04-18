@@ -4,8 +4,7 @@
     src: url("../luximr.ttf");
 }*/
 
-body
-{
+body {
 	font-family: Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(255,255,255);
     background-color: rgb(25,25,25);
@@ -13,7 +12,17 @@ body
     margin: auto;
 }
 
-#nav{
+::-moz-selection {
+  color: black;
+  background: gold;
+}
+
+::selection {
+  color: black;
+  background: gold;
+}
+
+#nav {
     font-size: 30px;
     max-width: 600px;
     margin: auto;
@@ -27,7 +36,7 @@ body
     vertical-align: middle;
 }
 
-#logo{
+#logo {
     height: auto;
     width: auto;
     min-height: 64px;
@@ -40,42 +49,42 @@ body
     background-repeat: no-repeat;
     background-size: contain;
 }
-#logo:hover{
+#logo:hover {
     background-image: url("/images/logo2.png");
 }
 
-#copy-img{
+#copy-img {
     max-height: 1rem;
 }
 
-@media (max-width:620px){
-    #nav{
+@media (max-width:620px) {
+    #nav {
         padding: 2vw;
     }
 }
 
-#link0{
+#link0 {
     grid-area: link0;
     position: relative;
     border-radius: 15px;
 }
 
-#link1{
+#link1 {
     grid-area: link1;
     position: relative;
     border-radius: 15px;
 }
 
-a:link{
+a:link {
     color:white;
     text-decoration: none;
 }
-a:visited{
+a:visited {
     color: white;
     text-decoration: none;
 }
 
-a{
+a {
     -webkit-transition: color .2s;
     -moz-transition:    color .2s;
     -ms-transition:     color .2s;
@@ -86,7 +95,7 @@ a{
     text-decoration: none;
 }
 
-.custom-button{
+.custom-button {
     -webkit-transition: background-color .2s;
     -moz-transition:    background-color .2s;
     -ms-transition:     background-color .2s;
@@ -109,25 +118,30 @@ a{
     position: relative;
 }
 
-.custom-button:hover{
+.custom-button:hover {
     color: gold;
     background-color: rgb(40, 40, 40);
 }
 
-#container{
+#container {
     position: relative;
 }
 
-#main{
+#main {
     font-size: 18px;
-    line-height: 2.4em;
+    line-height: 1.6em;
     max-width: 600px;
     padding: 1vw;
     margin: auto;
 }
 
+p + p {
+  margin-top: .75em;
+}
+
+
 /* about */
-#about-grid{
+#about-grid {
         display:grid;
         grid-template-columns: 1fr 1fr;
         grid-template-areas: 
@@ -140,52 +154,52 @@ a{
         height:auto;
 }
 
-#contact-start{
+#contact-start {
     text-align: center;
 }
 
-#contact-labels{
+#contact-labels {
     grid-area: p1;
     max-width: 50em;
 }
 
-#contact-labels li{
+#contact-labels li {
     text-align: left;
 }
 
-#contact-links{
+#contact-links {
     grid-area: p2;
     max-width: 50rem;
 }
 
-#contact-links li{
+#contact-links li {
     text-align: right;
 }
 
 /* for obfuscation */
-#email{
+#email {
     unicode-bidi:bidi-override;
     direction:rtl;
 }
 
-@media (max-width:620px){
-    #main{
+@media (max-width:620px) {
+    #main {
         text-align: center;
         font-size: 4.2vw;
     }
-    #logo{
+    #logo {
         height: auto;
         width: auto;
         min-height: 13vw;
         min-width: 13vw;
     }
-    #contact-labels{
+    #contact-labels {
         padding: 2vw;
     }
-    #contact-links{
+    #contact-links {
         padding: 2vw;
     }
-    #nav{
+    #nav {
         font-size: 5vw;
     }
 }
@@ -211,12 +225,11 @@ a{
     background-position: 50% 50%;
 }
 
-.project-image:hover{
+.project-image:hover {
     filter: brightness(50%);
 }
 
-#preloadedImages
-{
+#preloadedImages {
     width: 0px;
     height: 0px;
     display: inline;
