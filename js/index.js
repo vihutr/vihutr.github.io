@@ -1,8 +1,8 @@
 let aboutHTML = `
 <p>Hello, my name is Vincent Tran, also known as vihutr.</p>
-<p>I'm a programmer who enjoys making things that interest me and solving problems that bother me (and maybe others as well).</p>
-<p>I also enjoy art, music, reading, creating.</p>
-<p>I currently desire a venue of income that can make use of my skillset while challenging me to learn more, which I hope to convey through this website.</p>
+<p>I'm a programmer who enjoys making things that I find interesting and solving problems that bother me—and hopefully others as well.</p>
+<p>Sometimes I also exercise in art, music, reading, creating.</p>
+<p>I want to make use of my skillset in a way that still challenges me to learn more, and this website is a small part of that ever-moving goal.</p>
 <p>
 <div id = "about-grid">
     <ul id = contact-labels>
