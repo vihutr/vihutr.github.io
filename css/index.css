@@ -29,13 +29,16 @@ body
 
 #logo{
     height: auto;
+    width: auto;
+    min-height: 64px;
+    min-width: 64px;
     position: absolute;
     left: 50%;
     transform: translate(-50%);
     z-index: 1000;
     background-image: url("/images/logo1.png");
-    width: 64px;
-    height: 64px;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 #logo:hover{
     background-image: url("/images/logo2.png");
@@ -168,12 +171,22 @@ a{
 @media (max-width:620px){
     #main{
         text-align: center;
+        font-size: 4.2vw;
+    }
+    #logo{
+        height: auto;
+        width: auto;
+        min-height: 13vw;
+        min-width: 13vw;
     }
     #contact-labels{
         padding: 2vw;
     }
     #contact-links{
         padding: 2vw;
+    }
+    #nav{
+        font-size: 5vw;
     }
 }
 
@@ -201,3 +214,13 @@ a{
 .project-image:hover{
     filter: brightness(50%);
 }
+
+#preloadedImages
+{
+    width: 0px;
+    height: 0px;
+    display: inline;
+    background-image: url(/images/logo1.png);
+    background-image: url(/images/logo2.png);
+}
+
