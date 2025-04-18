@@ -1,7 +1,9 @@
 let aboutHTML = `
 <p>Hello, my name is Vincent Tran, aka vihutr.</p>
 <p>I'm a programmer who enjoys creating things that interest me and solving problems that bother me (and maybe others as well).</p>
-<p id=contact-start>Currently looking for work and opportunities!</p>
+<p>I also enjoy art, music, reading, whether consuming or creating.</p>
+<p>I currently desire a venue of income that both can make use if and challenge my skillset at the same time, so hopefully I am able to express this information properly throughout this website.</p>
+<p>
 <div id = "about-grid">
     <ul id = contact-labels>
         <li>Github:</li>
@@ -10,7 +12,7 @@ let aboutHTML = `
     </ul>
     <ul id = contact-links>
         <li><a class="custom-button" id="github"href="https://github.com/vihutr">vihutr</a></li>
-        <li><div class="custom-button fake-link" id="email" href="click to copy" onclick="copyEmail(); return false;">moc.liamg@rtuhiv<img id="copy-img" src="../images/copy.png"></img></div></li>
+        <li><div class="custom-button fake-link" id="email" href="click to copy" onclick="copyEmail(); return false;">moc.liamg@rtuhiv <ion-icon name="copy"></ion-icon><img id="copy-img"</div></li>
         <li><a class="custom-button" id="resume"
                 href=https://docs.google.com/document/d/1x4gQT8d2groLLyiGS7Lpcj71TsVz2qCcb5rU_907Cn0/edit?usp=sharing>Google Docs</a></li>
     </ul>
@@ -34,12 +36,15 @@ function getJSON(url, callback) {
 
 function projectHTML(obj) {
   html = `<div class="project">
-            <div class="project-image" style="background-image: url('images/projects/${obj['filename']}.png')"></div>
+            <div class="project-image" onclick="expandProject(); return false;" style="background-image: url('images/projects/${obj['filename']}.png')"></div>
           </div>`;
   return html;
 }
 
-function getProjects(data){
+function expandProject() {
+}
+
+function getProjects(data) {
     // selectGame(document.getElementById('projects').children[0]);
 
     console.log('begin testfunc');
