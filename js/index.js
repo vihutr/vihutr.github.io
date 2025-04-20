@@ -1,4 +1,4 @@
-let aboutHTML = `<p>Hello, my name is Vincent Tran, also known as vihutr.</p>
+let aboutText = `<p>Hello, my name is Vincent Tran, also known as vihutr.</p>
 <p>I'm a programmer who enjoys making things that I find interesting and solving problems that bother me—and hopefully others as well.</p>
 <p>Sometimes I also exercise in art, music, reading, creating.</p>
 <p>I want to make use of my skillset in a way that still challenges me to learn more, and this website is a small part of that ever-moving goal.</p>
@@ -14,43 +14,91 @@ let aboutHTML = `<p>Hello, my name is Vincent Tran, also known as vihutr.</p>
     <div class="contact-link"><a class="custom-button" id="resume" href=https://docs.google.com/document/d/1x4gQT8d2groLLyiGS7Lpcj71TsVz2qCcb5rU_907Cn0/edit?usp=sharing><span class="icon-text">Google Docs</a></div>
 </div>`
 
-let projectsHTML = `<div id = "project-container" class = "project-container">`
+let aboutHTML = document.createElement("about-container")
+aboutHTML.innerHTML = aboutText;
 
-function getJSON(url, callback) {
+let projectsText = `<div id = "project-container" class = "project-container">`;
+let projectsHTML = document.createElement("project-container")
+
+function createProjects(url, callback) {
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
             callback(JSON.parse(xmlHttp.responseText));
+            projectsHTML.innerHTML = projectsText;
+            const projectImgs = projectsHTML.querySelectorAll('[proj-img]');
+            const projectDescs = projectsHTML.querySelectorAll('[proj-desc]');
+
+            // behavior:
+            // click on img: check if corresponding desc is active or not
+            // if active, turn off
+            // if not active, loop through all descs and turn inactivem then turn corresponding desc active
+
+            // todo:
+            // stylize fullwidth sections (project-expanded in css)
+            projectImgs.forEach(image => {
+                image.parentElement.setAttribute('selected', 'false');
+                image.addEventListener('click', (e) => {
+                    console.log('button click');
+                    toggle = e.target;
+                    toggleParent = toggle.parentElement;
+                    toggleDesc = toggleParent.nextElementSibling;
+                    if (toggleParent.getAttribute('selected') === 'false'){
+                        console.log('non active button clicked');
+                        // hide all project descs
+                        projectDescs.forEach(openDesc => {
+                            if (!openDesc.classList.contains('is-hidden')) {
+                                console.log('active desc found');
+                                openToggleParent = openDesc.previousElementSibling;
+                                openToggleParent.setAttribute('selected', 'false');
+                                openDesc.classList.toggle('is-hidden');
+                            }
+                        });
+                        console.log('activating clicked button');
+                        toggleParent.setAttribute('selected', 'true');
+                        toggleDesc.classList.toggle('is-hidden');
+                    } else {
+                        // hide selected
+                        console.log('active button clicked, hiding');
+                        toggleParent.setAttribute('selected', 'false');
+                        toggleDesc.classList.toggle('is-hidden');
+                    }
+                });
+            });
         }
     }
     xmlHttp.open('GET', url, true);
     xmlHttp.send(null);
 }
 
+function hideAllProjects(descriptions) {
+    descriptions.forEach(desc => {
+        if (!desc.classList.contains('is-hidden')) {
+            desc.previousElementSibling
+        }
+    });
+}
+
 function projectHTML(obj) {
     html = `<div class="project">
-            <div class="project-image" onclick="expandProject(); return false;" style="background-image: url('images/projects/${obj['filename']}.png')"></div>
-            </div>`;
+                <div class="project-image" style="background-image: url('images/projects/${obj['filename']}.png')" proj-img></div>
+            </div>
+            <div class="project-expanded is-hidden" id="${obj['filename']}" proj-desc>${obj['desc']}</div>
+            `;
     return html;
 }
 
-function expandProject() {
-    
-}
-
-function getProjects(data) {
-    console.log('begin testfunc');
+function getProjectsText(data) {
     for (const proj of data['Projects']) {
-        projectsHTML += projectHTML(proj);
+        projectsText += projectHTML(proj);
     }
-    projectsHTML += "</div>"
+    projectsText += "</div>"
 }
 
-getJSON('./projects.json', getProjects)
+createProjects('./projects.json', getProjectsText)
 
 function setMain(html) {
-    document.getElementById('main').innerHTML = html;
-    //console.log(`called ${func.name}`)
+    document.getElementById('main').replaceChildren(html);
 }
 
 function copyToClipboard(text) {
@@ -102,13 +150,12 @@ Array.prototype.forEach.call(btns, function(btn) {
 });
 
 
-var lastUpdate = Date.now();
-var myInterval = setInterval(tick, 0);
-
-function tick() {
-    var now = Date.now();
-    var dt = now - lastUpdate;
-    lastUpdate = now;
-}
-
+// var lastUpdate = Date.now();
+// var myInterval = setInterval(tick, 0);
+// 
+// function tick() {
+//     var now = Date.now();
+//     var dt = now - lastUpdate;
+//     lastUpdate = now;
+// }
 setMain(aboutHTML)
