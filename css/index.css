@@ -5,7 +5,7 @@
 }*/
 
 body {
-	font-family: Ubuntu, Verdana, Geneva, Tahoma, sans-serif;
+	font-family: Ubuntu, Geneva, Tahoma, sans-serif;
     color: rgb(255,255,255);
     background-color: rgb(25,25,25);
     color: white;
@@ -209,9 +209,11 @@ p + p {
     }
 }
 
+/* projects */
 .project-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-auto-flow: dense;
     align-items: start;
     justify-items: center;
 }
@@ -234,10 +236,15 @@ p + p {
     filter: brightness(50%);
 }
 
+.project-expanded {
+    grid-column: 1 / -1;
+}
+
+.is-hidden {
+    display: none;
+}
+
 #preloadedImages {
-    width: 0px;
-    height: 0px;
-    display: inline;
     background-image: url(/images/logo1.png);
     background-image: url(/images/logo2.png);
 }
