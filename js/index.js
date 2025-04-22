@@ -51,16 +51,20 @@ function createProjects(url, callback) {
                                 console.log('active desc found');
                                 openToggleParent = openDesc.previousElementSibling;
                                 openToggleParent.setAttribute('selected', 'false');
+                                openToggleParent.style.setProperty('filter', 'brightness(100%)');
+
                                 openDesc.classList.toggle('is-hidden');
                             }
                         });
                         console.log('activating clicked button');
                         toggleParent.setAttribute('selected', 'true');
+                        toggleParent.style.setProperty('filter', 'brightness(50%)');
                         toggleDesc.classList.toggle('is-hidden');
                     } else {
                         // hide selected
                         console.log('active button clicked, hiding');
                         toggleParent.setAttribute('selected', 'false');
+                        toggleParent.style.setProperty('filter', 'brightness(100%)');
                         toggleDesc.classList.toggle('is-hidden');
                     }
                 });
@@ -69,14 +73,6 @@ function createProjects(url, callback) {
     }
     xmlHttp.open('GET', url, true);
     xmlHttp.send(null);
-}
-
-function hideAllProjects(descriptions) {
-    descriptions.forEach(desc => {
-        if (!desc.classList.contains('is-hidden')) {
-            desc.previousElementSibling
-        }
-    });
 }
 
 function projectHTML(obj) {
@@ -128,7 +124,7 @@ function copyEmail() {
     floatMsg.style.padding = '10px';
     floatMsg.style.zIndex = '1000';
     document.body.appendChild(floatMsg);
-    floatMsg.style.left = rect.left + window.scrollX - floatMsg.clientWidth - 5 + 'px';
+    floatMsg.style.left = rect.left + window.scrollX - floatMsg.clientWidth - 30 + 'px';
     floatMsg.style.top = rect.top + window.scrollY + 'px';
     let msgTimer = 500;
     setTimeout(function() {
