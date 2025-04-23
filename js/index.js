@@ -94,14 +94,10 @@ function projectLinks(obj) {
         github = link['github'];
         steam = link['steam'];
         if (typeof(github) !== "undefined") {
-            html += `<a href="${github}" class="project-link custom-button">
-    <ion-icon name="logo-github"></ion-icon>
-</a>`;
+            html += `<a href="${github}" class="project-link custom-button"><ion-icon name="logo-github"></ion-icon></a>`;
         }
         else if (typeof(steam) !== "undefined") {
-            html += `<a href="${steam}" class="project-link custom-button">
-    <ion-icon name="logo-steam"></ion-icon>
-</a>`;  
+            html += `<a href="${steam}" class="project-link custom-button"><ion-icon name="logo-steam"></ion-icon></a>`;  
         }
     }
     console.log(html);

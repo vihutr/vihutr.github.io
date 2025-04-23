@@ -225,8 +225,14 @@ p + p {
 }
 
 .project-links {
-    padding-top: .5em;
-    padding-bottom: .5em;
+    padding: .5em;
+}
+
+.project-link {
+    margin: .5em;
+}
+
+.project-link.custom-button {
 }
 
 .project-desc {
