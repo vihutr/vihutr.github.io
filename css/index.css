@@ -24,9 +24,8 @@ body {
 
 #nav {
     font-size: 30px;
-    max-width: 600px;
+    max-width: 700px;
     margin: 30px auto 15px auto;
-    padding: auto 10px auto 10px;
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
@@ -122,9 +121,9 @@ a {
 }
 
 #main {
-    font-size: 18px;
+    font-size: 25px;
     line-height: 1.6em;
-    max-width: 600px;
+    max-width: 700px;
     padding: 1vw;
     margin: auto;
 }
@@ -191,7 +190,7 @@ p + p {
     border-radius: 5px;
     border-color: white;
     box-shadow: 0 0 0 0.07em rgb(255, 255, 255);
-    background-size: auto 11em;
+    background-size: auto 8em;
     background-position: 50% 50%;
 }
 
@@ -229,7 +228,11 @@ p + p {
 }
 
 .project-link {
-    margin: .5em;
+    font-size: 2em;
+    margin-left: .2em;
+    margin-right: .2em;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .project-link.custom-button {
@@ -300,7 +303,7 @@ p + p {
         border-color: white;
         box-shadow: 0 0 0 0.07em rgb(255, 255, 255);
         background-position: 50% 50%;
-        background-size: auto 11em;
+        background-size: auto 10em;
     }
 
     .project-image:hover {
