@@ -20,67 +20,91 @@ aboutHTML.innerHTML = aboutText;
 let projectsText = `<div id = "project-container" class = "project-container">`;
 let projectsHTML = document.createElement("project-container")
 
-function createProjects(url, callback) {
+function loadProjects(url, callback) {
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
             callback(JSON.parse(xmlHttp.responseText));
             projectsHTML.innerHTML = projectsText;
-            const projectImgs = projectsHTML.querySelectorAll('[proj-img]');
-            const projectDescs = projectsHTML.querySelectorAll('[proj-desc]');
-
-            // behavior:
-            // click on img: check if corresponding desc is active or not
-            // if active, turn off
-            // if not active, loop through all descs and turn inactivem then turn corresponding desc active
-
-            // todo:
-            // stylize fullwidth sections (project-expanded in css)
-            projectImgs.forEach(image => {
-                image.parentElement.setAttribute('selected', 'false');
-                image.addEventListener('click', (e) => {
-                    console.log('button click');
-                    toggle = e.target;
-                    toggleParent = toggle.parentElement;
-                    toggleDesc = toggleParent.nextElementSibling;
-                    if (toggleParent.getAttribute('selected') === 'false'){
-                        console.log('non active button clicked');
-                        // hide all project descs
-                        projectDescs.forEach(openDesc => {
-                            if (!openDesc.classList.contains('is-hidden')) {
-                                console.log('active desc found');
-                                openToggleParent = openDesc.previousElementSibling;
-                                openToggleParent.setAttribute('selected', 'false');
-                                openToggleParent.style.setProperty('filter', 'brightness(100%)');
-
-                                openDesc.classList.toggle('is-hidden');
-                            }
-                        });
-                        console.log('activating clicked button');
-                        toggleParent.setAttribute('selected', 'true');
-                        toggleParent.style.setProperty('filter', 'brightness(50%)');
-                        toggleDesc.classList.toggle('is-hidden');
-                    } else {
-                        // hide selected
-                        console.log('active button clicked, hiding');
-                        toggleParent.setAttribute('selected', 'false');
-                        toggleParent.style.setProperty('filter', 'brightness(100%)');
-                        toggleDesc.classList.toggle('is-hidden');
-                    }
-                });
-            });
+            addProjectExpansions(projectsHTML);
+            // project expansion behavior
         }
     }
     xmlHttp.open('GET', url, true);
     xmlHttp.send(null);
 }
 
+function addProjectExpansions(HTML) {
+    const projectImgs = HTML.querySelectorAll('[proj-img]');
+    const projectDescs = HTML.querySelectorAll('[proj-desc]');
+
+    projectImgs.forEach(image => {
+        image.parentElement.setAttribute('selected', 'false');
+        image.addEventListener('click', (e) => {
+            console.log('button click');
+            toggle = e.target;
+            toggleParent = toggle.parentElement;
+            toggleDesc = toggleParent.nextElementSibling;
+            if (toggleParent.getAttribute('selected') === 'false'){
+                console.log('non active button clicked');
+                // hide all project descs
+                projectDescs.forEach(openDesc => {
+                    if (!openDesc.classList.contains('is-hidden')) {
+                        console.log('active desc found');
+                        openToggleParent = openDesc.previousElementSibling;
+                        openToggleParent.setAttribute('selected', 'false');
+                        openToggleParent.style.setProperty('filter', 'brightness(100%)');
+
+                        openDesc.classList.toggle('is-hidden');
+                    }
+                });
+                console.log('activating clicked button');
+                toggleParent.setAttribute('selected', 'true');
+                toggleParent.style.setProperty('filter', 'brightness(50%)');
+                toggleDesc.classList.toggle('is-hidden');
+            } else {
+                // hide selected
+                console.log('active button clicked, hiding');
+                toggleParent.setAttribute('selected', 'false');
+                toggleParent.style.setProperty('filter', 'brightness(100%)');
+                toggleDesc.classList.toggle('is-hidden');
+            }
+        });
+    });
+
+}
+
+//todo: fixup css on project-expanded, add name of project (to grid/flex as ell withint project-expanded)
 function projectHTML(obj) {
     html = `<div class="project">
                 <div class="project-image" style="background-image: url('images/projects/${obj['filename']}.png')" proj-img></div>
             </div>
-            <div class="project-expanded is-hidden" id="${obj['filename']}" proj-desc>${obj['desc']}</div>
+            <div class="project-expanded is-hidden" id="${obj['filename']}" proj-desc>
+                <div class="project-name">${obj['name']}</div>
+                <div class="project-links">${projectLinks(obj['links'])}</div>
+                <div class="project-desc">${obj['desc']}</div>
+            </div>
             `;
+    return html;
+}
+
+function projectLinks(obj) {
+    html = ``;
+    for (const link of obj){
+        github = link['github'];
+        steam = link['steam'];
+        if (typeof(github) !== "undefined") {
+            html += `<a href="${github}" class="project-link custom-button">
+    <ion-icon name="logo-github"></ion-icon>
+</a>`;
+        }
+        else if (typeof(steam) !== "undefined") {
+            html += `<a href="${steam}" class="project-link custom-button">
+    <ion-icon name="logo-steam"></ion-icon>
+</a>`;  
+        }
+    }
+    console.log(html);
     return html;
 }
 
@@ -90,8 +114,6 @@ function getProjectsText(data) {
     }
     projectsText += "</div>"
 }
-
-createProjects('./projects.json', getProjectsText)
 
 function setMain(html) {
     document.getElementById('main').replaceChildren(html);
@@ -138,13 +160,13 @@ window.mobileAndTabletCheck = function() {
     return check;
 };
 
-// disable dragging on fake links
-const btns = document.getElementsByClassName("fake-link");
-console.log(btns);
-Array.prototype.forEach.call(btns, function(btn) {
-    btn.addEventListener('dragstart', (e) => e.preventDefault())
-});
-
+function disableFakeLinkDrag(doc) {
+    const btns = doc.getElementsByClassName("fake-link");
+    console.log(btns);
+    Array.prototype.forEach.call(btns, function(btn) {
+        btn.addEventListener('dragstart', (e) => e.preventDefault());
+    });
+}
 
 // var lastUpdate = Date.now();
 // var myInterval = setInterval(tick, 0);
@@ -154,4 +176,7 @@ Array.prototype.forEach.call(btns, function(btn) {
 //     var dt = now - lastUpdate;
 //     lastUpdate = now;
 // }
+
+loadProjects('./projects.json', getProjectsText);
+disableFakeLinkDrag(document);
 setMain(aboutHTML)

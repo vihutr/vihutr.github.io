@@ -206,12 +206,31 @@ p + p {
 
 .project-expanded {
     grid-column: 1 / -1;
-    padding: 5px 10px 5px 100px;
+    display: grid;
+    grid-template-rows: .1fr .1fr 1fr;
+    grid-auto-flow: dense;
+    justify-items: center;
+    margin: 1.5em 0 1.5em 0;
     border: solid;
     border-left: none;
     border-right: none;
     border-width: 1px;
     border-color: white;
+}
+
+.project-name {
+    font-size: 1.5em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+.project-links {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+.project-desc {
+    padding: .5em;
 }
 
 .is-hidden {
@@ -283,7 +302,8 @@ p + p {
     }
 
     .project-expanded{
-
+        margin-top: 4vw;
+        margin-bottom: 4vw;
     }
 }
 

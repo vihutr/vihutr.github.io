@@ -4,17 +4,17 @@
             "name": "Dijkstra Pathfinding Variant in Pygame",
             "filename": "dijkstra-variant-pyg",
             "desc": "Dijkstra implementation on a square grid, with the directed graph generalized to all incoming path weights to a node being the same for that node.",
-            "links": {
-                "github": "https://github.com/vihutr/dijkstra-variant-pyg"
-            }
+            "links": [
+                { "github": "https://github.com/vihutr/dijkstra-variant-pyg" }
+            ]
         },
         {
             "name": "Spotify Pygame",
             "filename": "spotipygame",
             "desc": "A spotify song displayer using spotipy with pygame, with customizable options.",
-            "links": {
-                "github": "https://github.com/vihutr/spotipygame"
-            }
+            "links": [
+                { "github": "https://github.com/vihutr/spotipygame" }
+            ]
         }
     ]
 }
