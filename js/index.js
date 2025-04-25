@@ -1,7 +1,7 @@
 let aboutText = `<p>Hello, my name is Vincent Tran, also known as vihutr.</p>
 <p>I'm a programmer who enjoys making things that I find interesting and solving problems that bother me—and hopefully others as well.</p>
 <p>Sometimes I also exercise in art, music, reading, creating.</p>
-<p>I want to make use of my skillset in a way that still challenges me to learn more, and this website is a small part of that ever-moving goal.</p>
+<p>I want to make use of my skillset in a way that still challenges me to learn more, and this website is a small part of that endless endeavor.</p>
 <p>
 <div id = "about-grid">
     <div class="contact-label"><ion-icon class="icon" name="logo-github"></ion-icon> <span class="icon-text">Github:</span></div>
@@ -13,13 +13,12 @@ let aboutText = `<p>Hello, my name is Vincent Tran, also known as vihutr.</p>
     <div class="contact-label"><ion-icon class="icon" name="document-text-outline"></ion-icon> <span class="icon-text">Resume:</span></div>
     <div class="contact-link"><a class="custom-button" id="resume" href=https://docs.google.com/document/d/1x4gQT8d2groLLyiGS7Lpcj71TsVz2qCcb5rU_907Cn0/edit?usp=sharing><span class="icon-text">Google Docs</a></div>
 </div>`
+let projectsText = `<div id = "project-container" class = "project-container">`;
 
 let aboutHTML = document.createElement("about-container")
 aboutHTML.innerHTML = aboutText;
 
-let projectsText = `<div id = "project-container" class = "project-container">`;
 let projectsHTML = document.createElement("project-container")
-
 function loadProjects(url, callback) {
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
@@ -53,20 +52,20 @@ function addProjectExpansions(HTML) {
                         console.log('active desc found');
                         openToggleParent = openDesc.previousElementSibling;
                         openToggleParent.setAttribute('selected', 'false');
-                        openToggleParent.style.setProperty('filter', 'brightness(100%)');
+                        openToggleParent.style.setProperty('filter', 'brightness(50%)');
 
                         openDesc.classList.toggle('is-hidden');
                     }
                 });
                 console.log('activating clicked button');
                 toggleParent.setAttribute('selected', 'true');
-                toggleParent.style.setProperty('filter', 'brightness(50%)');
+                toggleParent.style.setProperty('filter', 'brightness(100%)');
                 toggleDesc.classList.toggle('is-hidden');
             } else {
                 // hide selected
                 console.log('active button clicked, hiding');
                 toggleParent.setAttribute('selected', 'false');
-                toggleParent.style.setProperty('filter', 'brightness(100%)');
+                toggleParent.style.setProperty('filter', 'brightness(50%)');
                 toggleDesc.classList.toggle('is-hidden');
             }
         });

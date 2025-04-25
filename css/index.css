@@ -23,8 +23,8 @@ body {
 }
 
 #nav {
-    font-size: 30px;
-    max-width: 700px;
+    font-size: 40px;
+    max-width: 725px;
     margin: 30px auto 15px auto;
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -37,8 +37,9 @@ body {
 }
 
 #logo {
-    height: auto;
-    width: auto;
+    display: inline;
+    height: 96px;
+    width: 96px ;
     min-height: 64px;
     min-width: 64px;
     position: absolute;
@@ -103,7 +104,7 @@ a {
     display: inline;
     cursor: pointer;
     border-radius: 5px;
-    background-color: rgb(70, 70, 70);
+    background-color: rgb(60, 60, 60);
     padding: 7px;
     white-space: nowrap;
     overflow: hidden;
@@ -180,6 +181,10 @@ p + p {
     justify-items: center;
 }
 
+.project {
+    filter: brightness(50%);
+}
+
 .project-image {
     text-align: center;
     height: 12em;
@@ -196,11 +201,6 @@ p + p {
 
 .project-image:hover {
     box-shadow: 0 0 0 0.1em gold;
-    filter: brightness(90%);
-}
-
-.project.selected {
-    filter: brightness(50%);
 }
 
 .project-expanded {
@@ -218,7 +218,7 @@ p + p {
 }
 
 .project-name {
-    font-size: 1.5em;
+    font-size: 1.3em;
     padding-top: .5em;
     padding-bottom: .5em;
 }
@@ -265,7 +265,6 @@ p + p {
     #main {
         text-align: center;
         font-size: 3.4vw;
-        padding: 5vw 5vw 0vw 5vw;
     }
     #logo {
         height: auto;
@@ -284,18 +283,23 @@ p + p {
     }
     #nav {
         font-size: 5vw;
+        padding: 3.25vw 1vw 3.25vw 1vw;
     }
 
     .project-container {
-        grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
+       grid-template-columns: repeat(2, 1fr);
         grid-auto-flow: dense;
         justify-items: center;
+    }
+    
+    .project{
+        padding: 1vw 0 1vw 0;
     }
 
     .project-image {
         text-align: center;
-        height: 33vw;
-        width: 33vw;
+        height: 30vw;
+        width: 30vw;
         max-height: 310px;
         max-width: 310px;
         margin: 1px;
@@ -304,10 +308,6 @@ p + p {
         box-shadow: 0 0 0 0.07em rgb(255, 255, 255);
         background-position: 50% 50%;
         background-size: auto 10em;
-    }
-
-    .project-image:hover {
-        filter: brightness(50%);
     }
 
     .project-expanded{
