@@ -79,8 +79,6 @@ export default class Player {
                 this.timer = 0
                 this.startx = this.x
                 this.starty = this.y
-                this.endx = null
-                this.endy = null
                 this.last_direction = null
                 // console.log("final pos")
                 // console.log(this.x, this.y)
