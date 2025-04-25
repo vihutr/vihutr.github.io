@@ -129,6 +129,17 @@ a {
     margin: auto;
 }
 
+#rpg {
+    position: absolute;
+    bottom: 0;
+}
+
+#alice {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
 p + p {
   margin-top: .75em;
 }
