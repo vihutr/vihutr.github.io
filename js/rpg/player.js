@@ -7,7 +7,7 @@ export default class Player {
         this.vy = 0
         this.facing = 0
         this.last_direction = null
-        this.speed = 5
+        this.speed = 1
         this.moving = false
         this.timer = 0
         this.startx = this.x
@@ -34,8 +34,6 @@ export default class Player {
         }
         this.startx = this.x
         this.starty = this.y
-        // console.log('x: ' + this.x)
-        // console.log('y: ' + this.y)
     }
 
     free_movement(){
@@ -54,62 +52,53 @@ export default class Player {
             if (move_dir_y > 0){ this.facing = 0 }
             else if (move_dir_y < 0){ this.facing = 3 }
         }
-
         this.spritesheet.sy = this.spritesheet.sprite_h * this.facing
     }
-    
+
+    calculate_destination() {
+        if (this.vx > 0) { this.endx = this.startx + this.grid_dist }
+        else if (this.vx < 0) { this.endx = this.startx - this.grid_dist }
+        if (this.vy > 0) { this.endy = this.starty + this.grid_dist }
+        else if (this.vy < 0) { this.endy = this.starty - this.grid_dist }
+    }
+
     grid_movement(msPerFrame){
         if (!this.moving && (this.vx != 0 || this.vy != 0)) {
             this.moving = true
-            if (this.vx > 0) { this.endx = this.startx + this.grid_dist }
-            else if (this.vx < 0) { this.endx = this.startx - this.grid_dist }
-            if (this.vy > 0) { this.endy = this.starty + this.grid_dist }
-            else if (this.vy < 0) { this.endy = this.starty - this.grid_dist }
-            // console.log(this.last_direction)
-
+            this.calculate_destination()
         } else if (this.moving) {
-            // console.log("moving")
-            this.timer += msPerFrame/60
-            // console.log(this.timer)
+            this.timer += (msPerFrame/60) * this.speed
             if (this.timer >= 1) {
-                this.timer = 1
-                this.moving = false
+                this.timer = 0
                 if (this.endx != null){ this.x = this.endx }
                 if (this.endy != null){ this.y = this.endy }
-                this.timer = 0
                 this.startx = this.x
                 this.starty = this.y
-                this.last_direction = null
-                // console.log("final pos")
-                // console.log(this.x, this.y)
+                if (!(this.vx != 0 || this.vy != 0)) {
+                    this.moving = false
+                } else {
+                    this.calculate_destination()
+                }
             }
-            // console.log(this.last_direction)
-            // consider adding diagonals as well
-            // console.log("lerp x")
             this.x = this.lerp( this.startx, this.endx, this.timer)
             this.y = this.lerp( this.starty, this.endy, this.timer)
-            // console.log(this.x)
-            // console.log("lerp y")
-            // console.log(this.y)
         }
+        this.vx = 0
+        this.vy = 0
     }
 
     lerp(start, end, t) {
-        let result = (start + (t * (end - start)));
-        // console.log("lerp func")
-        // console.log(start, end, t)
-        // console.log(result)
-        return result
+        return (start + (t * (end - start)));
     }
     // add a stack to track when inputs were last held down maybe
     handle_inputs(input){
-        if (!this.moving) {
-            if (input.keys["ArrowRight"].down){ this.vx += this.speed; }
-            if (input.keys["ArrowLeft"].down){ this.vx -= this.speed; }
-            if (input.keys["ArrowUp"].down){ this.vy -= this.speed; }
-            if (input.keys["ArrowDown"].down){ this.vy += this.speed; }
-            this.correct_direction()
-        }
+        if (input.keys["ArrowRight"].down){ this.vx += this.speed; }
+        if (input.keys["ArrowLeft"].down){ this.vx -= this.speed; }
+        if (input.keys["ArrowUp"].down){ this.vy -= this.speed; }
+        if (input.keys["ArrowDown"].down){ this.vy += this.speed; }
+        
+        // only for free movement
+        // this.correct_direction()
     }
 
     correct_direction(){
@@ -122,8 +111,5 @@ export default class Player {
         this.grid_h = grid.h;
         this.limit_w = ((this.grid_w - 1) * this.grid_dist) + 4
         this.limit_h = ((this.grid_h - 1) * this.grid_dist) + 4
-        // console.log("grid dimen")
-        // console.log(this.grid_w, this.grid_h)
-        // console.log(this.limit_w, this.limit_h)
     }
 }
