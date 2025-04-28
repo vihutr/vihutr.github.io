@@ -12,8 +12,11 @@ let aboutText = `<p>Hello, my name is Vincent Tran, also known as vihutr.</p>
 
     <div class="contact-label"><ion-icon class="icon" name="document-text-outline"></ion-icon> <span class="icon-text">Resume:</span></div>
     <div class="contact-link"><a class="custom-button" id="resume" href=https://docs.google.com/document/d/1x4gQT8d2groLLyiGS7Lpcj71TsVz2qCcb5rU_907Cn0/edit?usp=sharing><span class="icon-text">Google Docs</a></div>
-</div>`
+</div>`;
 let projectsText = `<div id = "project-container" class = "project-container">`;
+let hiddenText = `<a href="./game.html"><img id="rpg" src="images/rpg/rpg.png"></a>
+<a href="./alice.html"><img id="alice" src="images/rpg/alice.png"></a>
+`;
 
 let aboutHTML = document.createElement("about-container")
 aboutHTML.innerHTML = aboutText;
@@ -25,6 +28,7 @@ function loadProjects(url, callback) {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
             callback(JSON.parse(xmlHttp.responseText));
             projectsHTML.innerHTML = projectsText;
+            projectsHTML.innerHTML += hiddenText;
             addProjectExpansions(projectsHTML);
             // project expansion behavior
         }
@@ -99,7 +103,6 @@ function projectLinks(obj) {
             html += `<a href="${steam}" class="project-link custom-button"><ion-icon name="logo-steam"></ion-icon></a>`;  
         }
     }
-    console.log(html);
     return html;
 }
 
@@ -157,7 +160,6 @@ window.mobileAndTabletCheck = function() {
 
 function disableFakeLinkDrag(doc) {
     const btns = doc.getElementsByClassName("fake-link");
-    console.log(btns);
     Array.prototype.forEach.call(btns, function(btn) {
         btn.addEventListener('dragstart', (e) => e.preventDefault());
     });
@@ -171,6 +173,8 @@ function disableFakeLinkDrag(doc) {
 //     var dt = now - lastUpdate;
 //     lastUpdate = now;
 // }
+
+
 
 loadProjects('./projects.json', getProjectsText);
 disableFakeLinkDrag(document);
