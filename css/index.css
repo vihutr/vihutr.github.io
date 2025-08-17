@@ -50,7 +50,6 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
     clip-path: polygon(37.11% 12.97%, 29.69% 28.91%, 23.18% 54.16%, 27.73% 78.91%, 37.89% 94.42%, 65.25% 91.72%, 75.78% 73.44%, 76.55% 52.65%, 84.77% 41.41%, 97.27% 37.39%, 97.91% 0%, 83.59% 0%, 76.56% 4.69%, 73.83% 15.63%, 72.66% 40.63%, 68.36% 9.38%, 45.7% 7.81%);
-    filter: brightness(.9);
 }
 #logo:hover {
     background-image: url("/images/logo2.png");
