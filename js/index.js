@@ -1,7 +1,9 @@
-let aboutText = `<p>Hello, my name is Vincent Tran, also known as vihutr.</p>
-<p>I'm a programmer who enjoys making things that I find interesting and solving problems that bother me—and hopefully others as well.</p>
-<p>Sometimes I also exercise in art, music, reading, creating.</p>
-<p>I want to make use of my skillset in a way that still challenges me to learn more, and this website is a small part of that endless endeavor.</p>
+let aboutText = `<p>Hello, my name is Vincent Tran, a.k.a. vihutr.</p>
+<p>I'm a programmer, engineer, and problem solver.</p>
+<p>I occasionally play around with art, music, and like to read.</p>
+<p>I have a slight obsession with learning how things work from the bare-basics, which combined with my rather wide interest-spread and need for sustenance leads to what I would like to consider a unique jumble of a human being.</p>
+<p>(Every part of this site, for example, utilizes very few external tools or abstraction layers that weren't made by myself).</p>
+<p>Currently looking for work, feel free to check me out:</p>
 <p>
 <div id = "about-grid">
     <div class="contact-label"><ion-icon class="icon" name="logo-github"></ion-icon> <span class="icon-text">Github:</span></div>

@@ -40,8 +40,8 @@ body {
     display: inline;
     height: 96px;
     width: 96px ;
-    min-height: 64px;
-    min-width: 64px;
+    min-height: 96px;
+    min-width: 192px;
     position: absolute;
     left: 50%;
     transform: translate(-50%);
@@ -49,6 +49,8 @@ body {
     background-image: url("/images/logo1.png");
     background-repeat: no-repeat;
     background-size: contain;
+    clip-path: polygon(37.11% 12.97%, 29.69% 28.91%, 23.18% 54.16%, 27.73% 78.91%, 37.89% 94.42%, 65.25% 91.72%, 75.78% 73.44%, 76.55% 52.65%, 84.77% 41.41%, 97.27% 37.39%, 97.91% 0%, 83.59% 0%, 76.56% 4.69%, 73.83% 15.63%, 72.66% 40.63%, 68.36% 9.38%, 45.7% 7.81%);
+    filter: brightness(.9);
 }
 #logo:hover {
     background-image: url("/images/logo2.png");
@@ -115,6 +117,7 @@ a {
 .custom-button:hover {
     color: gold;
     background-color: rgb(40, 40, 40);
+    filter: drop-shadow(0 0 1px gold);
 }
 
 #container {
@@ -225,7 +228,7 @@ p + p {
     border: solid;
     border-left: none;
     border-right: none;
-    border-width: 1px;
+    border-width: 2px;
     border-color: white;
 }
 
@@ -252,6 +255,14 @@ p + p {
 
 .project-desc {
     padding: .5em;
+}
+
+#rpg {
+    height: 4vh;
+}
+
+#alice {
+    height: 4vh;
 }
 
 .is-hidden {
@@ -299,7 +310,7 @@ p + p {
     }
 
     .project-container {
-       grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-auto-flow: dense;
         justify-items: center;
     }
@@ -325,6 +336,12 @@ p + p {
     .project-expanded{
         margin-top: 4vw;
         margin-bottom: 4vw;
+    }
+    #rpg {
+        max-height: 5vh;
+    }
+    #alice {
+        max-height: 5vh;
     }
 }
 
