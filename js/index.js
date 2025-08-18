@@ -1,9 +1,9 @@
 let aboutText = `<p>Hello, my name is Vincent Tran, a.k.a. vihutr.</p>
 <p>I'm a programmer, engineer, and problem solver.</p>
 <p>I occasionally play around with art, music, and like to read.</p>
-<p>I have a slight obsession with learning how things work from the bare-basics, which combined with my rather wide interest-spread and need for sustenance leads to what I would like to consider a unique jumble of a human being.</p>
-<p>(Every part of this site, for example, utilizes very few external tools or abstraction layers that weren't made by myself).</p>
-<p>Currently looking for work, feel free to check me out:</p>
+<p>I am working on multiple projects at once and often try not to use too many external packages to have a more personal understanding of how things work, so a lot of what you see has been made <i>mostly</i> from scratch.</p>
+<p>Every part of this site, for example, utilizes very few external tools or abstraction layers that weren't made by myself, but maybe that will change eventually.</p>
+<p>Currently looking for work, feel free to contact/check me out:</p>
 <p>
 <div id = "about-grid">
     <div class="contact-label"><ion-icon class="icon" name="logo-github"></ion-icon> <span class="icon-text">Github:</span></div>
@@ -117,6 +117,13 @@ function getProjectsText(data) {
 
 function setMain(html) {
     document.getElementById('main').replaceChildren(html);
+    if (html == aboutHTML) { 
+        document.getElementById("logo").classList.add("awake");
+        document.getElementById("logo").classList.remove("sleep");
+    } else {
+        document.getElementById("logo").classList.add("sleep");
+        document.getElementById("logo").classList.remove("awake");
+    }
 }
 
 function copyToClipboard(text) {

@@ -46,13 +46,18 @@ body {
     left: 50%;
     transform: translate(-50%);
     z-index: 1000;
-    background-image: url("/images/logo1.png");
     background-repeat: no-repeat;
     background-size: contain;
     clip-path: polygon(37.11% 12.97%, 29.69% 28.91%, 23.18% 54.16%, 27.73% 78.91%, 37.89% 94.42%, 65.25% 91.72%, 75.78% 73.44%, 76.55% 52.65%, 84.77% 41.41%, 97.27% 37.39%, 97.91% 0%, 83.59% 0%, 76.56% 4.69%, 73.83% 15.63%, 72.66% 40.63%, 68.36% 9.38%, 45.7% 7.81%);
 }
-#logo:hover {
-    background-image: url("/images/logo2.png");
+#logo.sleep {
+    background-image: url("/images/logo-sleep1.png");
+}
+#logo.sleep:hover {
+    background-image: url("/images/logo-sleep2.png");
+}
+#logo.awake {
+    background-image: url("/images/logo-talking.gif");
 }
 
 #copy-img {
@@ -113,10 +118,19 @@ a {
     vertical-align: middle;
 }
 
+.custom-button.no-bg {
+    background-color: transparent;
+}
+
 .custom-button:hover {
     color: gold;
     background-color: rgb(40, 40, 40);
     filter: drop-shadow(0 0 1px gold);
+}
+
+.custom-button.no-bg:hover {
+    background-color: transparent;
+    filter: drop-shadow(0 0 0 gray);
 }
 
 #container {
@@ -274,8 +288,9 @@ p + p {
 }
 
 #preloadedImages {
-    background-image: url(/images/logo1.png);
-    background-image: url(/images/logo2.png);
+    background-image: url(/images/logo-sleep1.png);
+    background-image: url(/images/logo-sleep2.png);
+    background-image: url(/images/logo-talking.gif);
 }
 
 
