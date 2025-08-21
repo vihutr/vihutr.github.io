@@ -26,11 +26,11 @@ body {
     font-size: 40px;
     max-width: 725px;
     margin: 30px auto 15px auto;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr 0 1fr;
     grid-template-areas: 
-        'link0 link1';
-    height:auto;
+        'link0 logo link1';
+    height: auto;
     align-items: center;
     text-align: center;
     vertical-align: middle;
@@ -313,6 +313,7 @@ p + p {
         height: auto;
         width: auto;
         transform: translate(-50%, -15%);
+        size: 50%;
         min-height: 17vw;
         min-width: 36vw;
     }
