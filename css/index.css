@@ -38,11 +38,11 @@ body {
 
 #logo {
     display: inline;
+    position: relative;
     height: 96px;
     width: 96px ;
     min-height: 96px;
     min-width: 192px;
-    position: absolute;
     left: 50%;
     transform: translate(-50%, 0%);
     z-index: 1000;
@@ -295,8 +295,8 @@ p + p {
         border-radius: 1vw;
     }
     #nav {
-        font-size: 5vw;
-        padding: 3.25vw 1vw 3.25vw 1vw;
+        font-size: 5.5vw;
+        padding: 0;
     }
 
     #main {
@@ -304,11 +304,13 @@ p + p {
         font-size: 3.4vw;
     }
     #logo {
-        position: absolute;
+        position: relative;
         height: auto;
         width: auto;
         min-height: 17vw;
         min-width: 36vw;
+        justify-content: center;
+        top: -4vw;
     }
     #about-grid {
         line-height: 2vw;
