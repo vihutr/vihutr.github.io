@@ -150,6 +150,7 @@ a {
     position: absolute;
     bottom: 0;
     right: 0;
+    opacity: 3%;
 }
 
 p + p {
@@ -295,8 +296,10 @@ p + p {
         border-radius: 1vw;
     }
     #nav {
-        font-size: 5.5vw;
-        padding: 0;
+        font-size: 5vw;
+        margin-top: 4vw;
+        padding: 0 2vw;
+        margin-bottom: 0;
     }
 
     #main {
@@ -332,7 +335,7 @@ p + p {
     }
     
     .project{
-        padding: 1vw 0 1vw 0;
+        padding: 8vw 0;
     }
 
     .project-image {
@@ -350,8 +353,8 @@ p + p {
     }
 
     .project-expanded{
-        margin-top: 4vw;
-        margin-bottom: 4vw;
+        margin-top: 2vw;
+        margin-bottom: 2vw;
     }
     #rpg {
         max-height: 5vh;

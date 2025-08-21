@@ -21,6 +21,8 @@ let projectsText = `<div id = "project-container" class = "project-container">`;
 // `;
 let hiddenText = `<a href="./alice.html"><img id="alice" src="images/rpg/alice.png"></a>`;
 
+let otherText = `maybe blog links? we will see, also tailscale + npx is a great way to test on mobile btw :)`;
+
 let aboutHTML = document.createElement("about-container")
 aboutHTML.innerHTML = aboutText;
 
