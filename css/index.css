@@ -312,8 +312,6 @@ p + p {
         position: absolute;
         height: auto;
         width: auto;
-        transform: translate(-50%, -15%);
-        size: 50%;
         min-height: 17vw;
         min-width: 36vw;
     }
