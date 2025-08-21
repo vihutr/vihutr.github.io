@@ -15,6 +15,18 @@
             "links": [
                 { "github": "https://github.com/vihutr/spotipygame" }
             ]
+        },
+        {
+            "name": "RPGMaker clone (Grid Movement Demo)",
+            "filename": "rpgm",
+            "desc": "An basic functioning rpgmaker clone with a title screen/menu and basic grid movement using lerp. Move with arrow keys, confirm with z (only new game interacts with this currently).",
+            "links": [
+                {   
+                    "github": "https://github.com/vihutr/vihutr.github.io/tree/master/js/rpg",
+                    "link": "https://vihutr.github.io/game.html"
+                }
+
+            ]
         }
     ]
 }
