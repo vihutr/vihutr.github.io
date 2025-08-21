@@ -205,7 +205,7 @@ p + p {
 }
 
 .project {
-    filter: brightness(50%);
+    filter: brightness(75%);
 }
 
 .project-image {
@@ -311,6 +311,10 @@ p + p {
         min-width: 36vw;
         justify-content: center;
         top: -4vw;
+    }
+    .custom-button:hover {
+        color: none;
+        filter: none;
     }
     #about-grid {
         line-height: 2vw;
