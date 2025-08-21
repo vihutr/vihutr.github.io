@@ -96,16 +96,11 @@ a {
 }
 
 .custom-button {
-    -webkit-transition: background-color .2s;
-    -moz-transition:    background-color .2s;
-    -ms-transition:     background-color .2s;
-    -o-transition:      background-color .2s;
-    transition:         background-color .2s;
-    -webkit-transition: color .2s;
-    -moz-transition:    color .2s;
-    -ms-transition:     color .2s;
-    -o-transition:      color .2s;
-    transition:         color .2s;
+    -webkit-transition: background-color .2s, color .2s;
+    -moz-transition:    background-color .2s, color .2s;
+    -ms-transition:     background-color .2s, color .2s;
+    -o-transition:      background-color .2s, color .2s;
+    transition:         background-color .2s, color .2s;
         
     display: inline;
     cursor: pointer;
@@ -354,6 +349,7 @@ p + p {
     }
     #rpg {
         max-height: 5vh;
+        display: none;
     }
     #alice {
         max-height: 5vh;
