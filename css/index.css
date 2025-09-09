@@ -77,7 +77,7 @@ body {
 }
 
 a:link {
-    color:white;
+    color: white;
     text-decoration: none;
 }
 a:visited {
@@ -85,7 +85,8 @@ a:visited {
     text-decoration: none;
 }
 
-a {
+a:hover {
+    color: gold;
     -webkit-transition: color .2s;
     -moz-transition:    color .2s;
     -ms-transition:     color .2s;
@@ -334,7 +335,7 @@ p + p {
         justify-items: center;
     }
     
-    .project{
+    .project {
         padding: 8vw 0;
     }
 
@@ -352,7 +353,7 @@ p + p {
         background-size: auto 10em;
     }
 
-    .project-expanded{
+    .project-expanded {
         margin-top: 2vw;
         margin-bottom: 2vw;
     }
@@ -363,4 +364,8 @@ p + p {
     #alice {
         max-height: 5vh;
     }
+}
+
+.blog-link a:hover {
+    color: gold;
 }

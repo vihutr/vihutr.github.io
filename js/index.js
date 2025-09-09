@@ -42,6 +42,62 @@ function loadProjects(url, callback) {
     xmlHttp.send(null);
 }
 
+let blogText = `
+<div id = "blog-grid">
+`
+let blogHTML = document.createElement("blog-container");
+blogHTML.innerHTML = blogText;
+
+const blogDir = './blog/';
+const entriesJson = 'blog_entries.json'
+
+async function loadJson(filename) {
+    const resp = await fetch(filename);
+    return await resp.json();
+}
+
+async function createBlogEntryLinks() {
+    // loop through directory and add links
+    let entries = await loadJson(entriesJson);
+    for (const entry of entries) {
+        let label = entry.split('.')[0].replaceAll('-', '/')
+        let link = `<a class="blog-link" href="./${blogDir}${entry}">${label}</a>`;
+        blogHTML.innerHTML += link;
+    }
+    blogHTML.innerHTML += '</div>'
+}
+
+async function loadBlogEntry() {
+    // consider loading a single container with conents of md
+    // and parsing using below fucntion
+}
+
+
+function simpleMarkdown(md) {
+    let html = md;
+
+    // headings
+    html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+    html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+    html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+
+    // bold / italic
+    html = html.replace(/\*\*(.*?)\*\*/gim, '<b>$1</b>');
+    html = html.replace(/\*(.*?)\*/gim, '<i>$1</i>');
+
+    // links [text](url)
+    html = html.replace(/\[(.*?)\]\((.*?)\)/gim, "<a href='$2'>$1</a>");
+
+    // unordered lists
+    html = html.replace(/^\s*[-+*]\s+(.*$)/gim, '<li>$1</li>');
+    html = html.replace(/(<li>.*<\/li>)/gims, '<ul>$1</ul>');
+
+    // paragraphs (wrap remaining text lines in <p>)
+    html = html.replace(/^(?!<h\d>|<ul>|<li>|<p>|<b>|<i>|<a)(.+)$/gim, '<p>$1</p>');
+
+    return html.trim();
+}
+
 function addProjectExpansions(HTML) {
     const projectImgs = HTML.querySelectorAll('[proj-img]');
     const projectDescs = HTML.querySelectorAll('[proj-desc]');
@@ -197,5 +253,6 @@ function disableFakeLinkDrag(doc) {
 
 
 loadProjects('./projects.json', getProjectsText);
+createBlogEntryLinks();
 disableFakeLinkDrag(document);
 setMain(aboutHTML)
