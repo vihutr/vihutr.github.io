@@ -43,7 +43,6 @@ function loadProjects(url, callback) {
 }
 
 let blogText = `
-<div id = "blog-grid">
 `
 let blogHTML = document.createElement("blog-container");
 blogHTML.innerHTML = blogText;
@@ -61,7 +60,7 @@ async function createBlogEntryLinks() {
     let entries = await loadJson(entriesJson);
     for (const entry of entries) {
         let label = entry.split('.')[0].replaceAll('-', '/')
-        let link = `<a class="blog-link" href="./${blogDir}${entry}">${label}</a>`;
+        let link = `<p><a class="blog-link" href="./${blogDir}${entry}">${label}</a></p>`;
         blogHTML.innerHTML += link;
     }
     blogHTML.innerHTML += '</div>'
