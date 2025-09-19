@@ -1,6 +1,7 @@
 import os, json, sys
 
-blog_dir = "../blog/"
+root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+blog_dir = os.path.join(root_dir, "blog")
 
 files = []
 
