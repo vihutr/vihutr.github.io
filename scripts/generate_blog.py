@@ -10,7 +10,7 @@ for filename in sorted(os.listdir(blog_dir)):
     if os.path.isfile(filepath):
         files.append(filename)
 
-with open("../blog_entries.json", "w") as file:
+with open(os.path.join(root_dir, "blog_entries.json"), "w") as file:
     json.dump(files, file, indent=2)
 
 print("Updated Entries")
