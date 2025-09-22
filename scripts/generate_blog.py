@@ -5,7 +5,7 @@ blog_dir = os.path.join(root_dir, "blog")
 
 files = []
 
-for filename in sorted(os.listdir(blog_dir)):
+for filename in sorted(os.listdir(blog_dir), reverse=True):
     filepath = os.path.join(blog_dir, filename)
     if os.path.isfile(filepath):
         files.append(filename)
