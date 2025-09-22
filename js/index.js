@@ -58,9 +58,11 @@ async function loadJson(filename) {
 async function createBlogEntryLinks() {
     // loop through directory and add links
     let entries = await loadJson(entriesJson);
+    let url = "https://github.com/vihutr/vihutr.github.io/tree/master/blog"
     for (const entry of entries) {
         let label = entry.split('.')[0].replaceAll('-', '/')
-        let link = `<p><a class="blog-link" href="./${blogDir}${entry}">${label}</a></p>`;
+        // let link = `<p><a class="blog-link" href="./${blogDir}${entry}">${label}</a></p>`;
+        let link = `<p><a class="blog-link" href="${url}/${entry}">${label}</a></p>`;
         blogHTML.innerHTML += link;
     }
     blogHTML.innerHTML += '</div>'
