@@ -5,6 +5,7 @@ on:
     branches: [ "master" ]
     paths:
       - "blog/**"
+  workflow_dispatch:
 
 jobs:
   update-entries:
@@ -21,11 +22,11 @@ jobs:
       - name: Run Script
         run: python scripts/generate_blog.py
 
-      - name: Commit and push manifest
+      - name: Commit and push entries
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add manifest.json
-          git commit -m "Update manifest [skip ci]" || echo "No changes"
+          git add blog_entries.json
+          git commit -m "Update entries [skip ci]" || echo "No changes"
           git push
 
