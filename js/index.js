@@ -16,9 +16,6 @@ let aboutText = `<p>Hello, my name is Vincent Tran, a.k.a. vihutr.</p>
     <div class="contact-link"><a class="custom-button" id="resume" href=https://docs.google.com/document/d/1x4gQT8d2groLLyiGS7Lpcj71TsVz2qCcb5rU_907Cn0/edit?usp=sharing><span class="icon-text">Google Docs</a></div>
 </div>`;
 let projectsText = `<div id = "project-container" class = "project-container">`;
-// let hiddenText = `<a href="./game.html"><img id="rpg" src="images/rpg/rpg.png"></a>
-// <a href="./alice.html"><img id="alice" src="images/rpg/alice.png"></a>
-// `;
 let hiddenText = `<a href="./alice.html"><img id="alice" src="images/rpg/alice.png"></a>`;
 
 let otherText = `maybe blog links? we will see, also tailscale + npx is a great way to test on mobile btw :)`;
